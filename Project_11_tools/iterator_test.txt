@@ -1,0 +1,17 @@
+%14
+%print
+%hasNext
+%next
+%print
+%hasNext
+%next
+%print
+%hasNext
+%next
+%print
+%hasPrevious
+%previous
+%print
+%hasPrevious
+%previous
+%print

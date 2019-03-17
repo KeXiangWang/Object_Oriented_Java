@@ -1,0 +1,149 @@
+import java.io.*;
+class Term{
+	private int coe;
+	private int deg;
+	public void setTerm(int a, int b) {
+		coe = a;
+		deg = b;
+		//System.out.println("coe:"+coe+"  deg:"+deg);
+	}
+	public int degree() {
+		return deg;
+	}
+}
+
+class Poly{
+	private Term termList[] ;
+	private int termNum ; 
+	public Poly(int num) {
+		int i;
+		termNum = num;
+		termList = new Term[60];
+		for(i=0;i<30;i++) {
+			termList[i]=new Term();
+		}
+	}
+	public int count() {
+		return termNum;
+	}
+	public void extend(int a, int b) {
+		int i,j;
+		
+		for(i=0;i<termNum-1;i++) {
+			if(termList[i].degree()>b) {
+				for(j=termNum;j>i;j--) {
+					termList[j]=termList[j-1];
+				}
+				termList[i].setTerm(a,b);
+				System.out.println("i"+i);
+			}
+		}
+		if(i==termNum-1) {
+			termList[termNum].setTerm(a,b);
+			System.out.println("term"+termNum);
+		}
+		if(termNum==0) {
+			termList[termNum].setTerm(a,b);
+			System.out.println("term0  "+termNum);
+		}
+			
+		termNum++;
+		
+		//System.out.println(termNum);
+	}
+	
+ 	public Poly add (Poly q) {
+		return q;
+	}
+	public Poly sub (Poly q) {
+		return q;
+	}
+}
+public class ComputePoly {
+	private Poly polyList[];
+	private Operator opList[];
+	private int num;
+	enum Operator{ADD, SUB};
+	public ComputePoly() {
+		polyList = new Poly[30];
+		for(num=0;num<30;num++) {
+			polyList[num]=new Poly(0);
+		}
+		num=0;
+		opList = new Operator[30];
+	}
+	private void parsePoly(String s) {
+		
+		int begin=0, end=0, i=0, addOpLoc, subOpLoc, opLoc;
+		int termBegin=0, termMid=0, termEnd=0;
+		int a,b;
+		String A, B;
+
+		do {
+			addOpLoc= s.indexOf('+', end);
+			subOpLoc= s.indexOf('-', end);
+			
+			//System.out.println("ori"+end+"  add:"+addOpLoc+"  sub:"+subOpLoc);
+			if(addOpLoc>=0 && subOpLoc>=0) 
+				opLoc= Math.min(addOpLoc, subOpLoc);
+			else 
+				opLoc= Math.max(addOpLoc, subOpLoc);
+			begin= s.indexOf('{', end);
+			end = s.indexOf('}', begin);
+			//System.out.println("new"+begin+" "+end);
+			if(opLoc>begin||opLoc==-1) {
+				opList[0]= Operator.ADD;
+				System.out.println("+"+opLoc);
+			}
+				
+			else {
+				opList[i]= (s.charAt(opLoc)=='+')? Operator.ADD : Operator.SUB ;
+				System.out.println(opList[i]+" ? "+opLoc);
+			}
+				
+			do {
+				termBegin= s.indexOf('(', termEnd);
+				termMid= s.indexOf(',', termBegin);
+				termEnd= s.indexOf(')', termBegin);
+				A=s.substring(termBegin+1,termMid);
+				B=s.substring(termMid+1,termEnd);
+				//System.out.println(A+B);
+				a= Integer.parseInt(A);
+				b= Integer.parseInt(B);
+				polyList[num].extend(a, b);
+				
+				i++;
+				//System.out.println("begin:"+a+"end:"+b);
+			}while(termEnd!=end-1) ;
+			System.out.println(i);
+			num++;
+			//System.out.println("begin:"+begin+"end:"+end);
+		} while(end!=s.length()-1);
+		System.out.println(num);
+		
+	}
+	private void compute(){
+		Poly p = polyList[0]; 
+		Poly p1,p2; 
+		for(int i=1;i<num; i++){
+			p2 = polyList[i];
+			Operator op=opList[i-1]; 
+			if(op==Operator.ADD) 
+				p1=p.add(p2); 
+			else 
+				p1=p.sub(p2); 
+			p=p1; 
+		} 
+	}
+	public static void main(String args[]) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str;
+	    str = br.readLine();
+	    String str2 = str.replaceAll(" ", ""); 
+	    ComputePoly cp = new ComputePoly();
+	    cp.parsePoly(str2); 
+	    //System.out.print(str2);
+	}
+}
+

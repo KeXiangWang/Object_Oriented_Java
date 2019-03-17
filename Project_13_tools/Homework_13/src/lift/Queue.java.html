@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Queue.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">ElevatorTest (2018-6-6 15:22:57)</a> &gt; <a href="../../index.html" class="el_group">Homework_13</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">lift</a> &gt; <span class="el_source">Queue.java</span></div><h1>Queue.java</h1><pre class="source lang-java linenums"><span class="fc" id="L1">package lift;</span>
+
+<span class="fc" id="L3">enum Requester {</span>
+<span class="fc" id="L4">	FR, ER</span>
+}
+
+<span class="fc" id="L7">enum Direction {</span>
+<span class="fc" id="L8">	UP, DOWN</span>
+}
+
+public class Queue {
+	/**
+	 * @Overview: Queue is a queue of request, it provides methods to add, wash,
+	 *            judge, justify, change information and get information.
+	 */
+
+	private static final int MAX = 200;
+	private Request[] rqList;
+	private int[] validity;
+	private int front;
+	private int rear;
+	private Request unhandle;
+	private Request mainRq;
+	private int unhandlePosition;
+
+	/**
+	 * @REQUIRES: None;
+	 * @MODIFIES: this;
+	 * @EFFECTS: construct(this);
+	 */
+<span class="fc" id="L31">	public Queue() {</span>
+<span class="fc" id="L32">		rqList = new Request[MAX];</span>
+<span class="fc" id="L33">		validity = new int[MAX];</span>
+<span class="fc" id="L34">		front = 0;</span>
+<span class="fc" id="L35">		rear = 0;</span>
+<span class="fc" id="L36">		unhandle = null;</span>
+<span class="fc" id="L37">		mainRq = null;</span>
+<span class="fc" id="L38">		unhandlePosition = -1;</span>
+<span class="fc" id="L39">	}</span>
+
+	public Request getMain() {
+<span class="fc" id="L42">		return mainRq;</span>
+	}
+
+	/** 
+	 * @EFFECTS: \result == rear - front);
+	 */
+	public int getSize() {
+<span class="fc" id="L49">		return rear - front;</span>
+	}
+
+	/**
+	 * @EFFECTS: (front &gt;= rear) ==&gt; (\result == true); (front &lt; rear) ==&gt; (\result
+	 *           == false);
+	 */
+	public boolean end() {
+<span class="fc bfc" id="L57" title="All 2 branches covered.">		if (front &gt;= rear)</span>
+<span class="fc" id="L58">			return true;</span>
+		else
+<span class="fc" id="L60">			return false;</span>
+	}
+
+	/**
+	 * @REQUIRES: None;
+	 * @MODIFIES: this;
+	 * @EFFECTS: (According to the information from lastRq and elevator, choose a
+	 *           proper request on the basic of the information of this queue. And
+	 *           change some fields if necessary) ==&gt; \result == request;
+	 */
+	public Request frontRq(Request lastRq, Elevator elevator) {
+<span class="fc bfc" id="L71" title="All 2 branches covered.">		if (validity[front] == 0) {</span>
+<span class="fc" id="L72">			return rqList[front];</span>
+		} else {
+<span class="fc" id="L74">			getSize();</span>
+<span class="fc" id="L75">			Request nearRequest = null;</span>
+<span class="fc" id="L76">			int nearPosition = -1;</span>
+<span class="fc" id="L77">			mainRq = rqList[front];</span>
+<span class="fc" id="L78">			double newClock = elevator.predictTime(mainRq, mainRq);</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">			for (int i = front + 1; i &lt; rear; i++) {</span>
+<span class="fc bfc" id="L80" title="All 4 branches covered.">				if (rqList[i].getTime() &lt;= newClock + 1 &amp;&amp; mainRq.equals(rqList[i])) {</span>
+<span class="fc" id="L81">					validity[i] = 0;</span>
+<span class="fc" id="L82">					continue;</span>
+				}
+<span class="fc bfc" id="L84" title="All 2 branches covered.">				if (rqList[i].getTime() &gt;= newClock) {</span>
+<span class="fc" id="L85">					break;</span>
+				}
+<span class="fc bfc" id="L87" title="All 4 branches covered.">				if (validity[i] == 0 || validity[i] == 2)</span>
+<span class="fc" id="L88">					continue;</span>
+				// if (mainRq.equals(rqList[i])) {
+				// validity[i] = 0;
+				// continue;
+				// }
+<span class="fc" id="L93">				int judgeResult = judge(mainRq, rqList[i], elevator);</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">				if (judgeResult == 1) {</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">					if (nearPosition == -1) { // BEST?</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">						if (!(lastRq.getMt() == 0 &amp;&amp; Math.abs(lastRq.getFloor() - elevator.getFloor()) &gt; Math</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">								.abs(rqList[i].getFloor() - elevator.getFloor()))) {</span>
+<span class="fc" id="L98">							nearRequest = rqList[i];</span>
+<span class="fc" id="L99">							nearPosition = i;</span>
+						}
+<span class="fc" id="L101">					} else {</span>
+<span class="fc" id="L102">						if (Math.abs(nearRequest.getFloor() - elevator.getFloor()) &gt; Math</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">								.abs(rqList[i].getFloor() - elevator.getFloor())) { </span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">							if (!(lastRq.getMt() == 0 &amp;&amp; Math.abs(lastRq.getFloor() - elevator.getFloor()) &gt; Math</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">									.abs(rqList[i].getFloor() - elevator.getFloor()))) {  </span>
+<span class="fc" id="L106">								nearRequest = rqList[i];</span>
+<span class="fc" id="L107">								nearPosition = i;</span>
+							} 
+						}
+					}
+<span class="fc bfc" id="L111" title="All 2 branches covered.">				} else if (judgeResult == 2) {</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">					if (unhandlePosition == -1) {</span>
+<span class="fc" id="L113">						unhandle = rqList[i];</span>
+<span class="fc" id="L114">						unhandlePosition = i;</span>
+					}
+				} else {
+				}
+			}
+<span class="fc bfc" id="L119" title="All 2 branches covered.">			if (nearRequest == null) {</span>
+<span class="fc" id="L120">				front++;</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">				while (validity[front] == 2)</span>
+<span class="fc" id="L122">					front++;</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">				if (unhandlePosition != -1) {</span>
+<span class="fc" id="L124">					justifyUnhandle();</span>
+<span class="fc" id="L125">					unhandlePosition = -1;</span>
+				}
+<span class="fc" id="L127">				return mainRq;</span>
+			} else {
+<span class="fc" id="L129">				rqList[nearPosition].setMt(0);</span>
+<span class="fc" id="L130">				rqList[nearPosition].setFt(mainRq.getTime());</span>
+<span class="fc" id="L131">				validity[nearPosition] = 2;</span>
+<span class="fc" id="L132">				nearPosition = -1;</span>
+<span class="fc" id="L133">				return nearRequest;</span>
+			}
+
+		}
+	}
+
+	/**
+	 * @MODIFIES: None;
+	 * @EFFECTS: a &gt; b ==&gt; \result == Direction.DOWN; a &lt; b ==&gt; \result ==
+	 *           Direction.UP; a == b ==&gt; \result == null;
+	 */
+	private Direction getRelativeDirection(int a, int b) {
+<span class="fc bfc" id="L145" title="All 2 branches covered.">		if (a &gt; b) {</span>
+<span class="fc" id="L146">			return Direction.DOWN;</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">		} else if (a &lt; b) {</span>
+<span class="fc" id="L148">			return Direction.UP;</span>
+		} else {
+<span class="fc" id="L150">			return null;</span>
+		}
+	}
+
+	/**
+	 * @REQUIRES: None;
+	 * @MODIFIES: this;
+	 * @EFFECTS: (rq is pickup-able for mainRq and elevator but not scalable) ==
+	 *           \result == 1; (rq is scalable for mainRq and elevator) == \result
+	 *           == 2; (other conditions) == \result == 0;
+	 */
+	private int judge(Request mainRq, Request rq, Elevator elevator) {
+<span class="fc" id="L162">		double newClock = elevator.predictTime(mainRq, rq);</span>
+<span class="fc" id="L163">		Direction direction = getRelativeDirection(elevator.getFloor(), mainRq.getFloor());</span>
+<span class="fc bfc" id="L164" title="All 2 branches covered.">		if (direction == null) {</span>
+<span class="fc" id="L165">			return 0;</span>
+		}
+<span class="fc bfc" id="L167" title="All 2 branches covered.">		if (rq.getGt() == Requester.FR) {</span>
+<span class="fc bfc" id="L168" title="All 2 branches covered.">			if (direction != rq.getDr())</span>
+<span class="fc" id="L169">				return 0;</span>
+<span class="fc bfc" id="L170" title="All 6 branches covered.">			if (rq.getFloor() &lt;= mainRq.getFloor() &amp;&amp; rq.getFloor() &gt; elevator.getFloor() &amp;&amp; newClock &gt; rq.getTime()) {</span>
+<span class="fc" id="L171">				return 1;</span>
+<span class="fc bfc" id="L172" title="All 4 branches covered.">			} else if (rq.getFloor() &gt;= mainRq.getFloor() &amp;&amp; rq.getFloor() &lt; elevator.getFloor()</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">					&amp;&amp; newClock &gt; rq.getTime()) {</span>
+<span class="fc" id="L174">				return 1;</span>
+			} else {
+<span class="fc" id="L176">				return 0;</span>
+			}
+		} else {
+<span class="fc bfc" id="L179" title="All 4 branches covered.">			if (rq.getFloor() &lt;= mainRq.getFloor() &amp;&amp; rq.getFloor() &gt; elevator.getFloor()) {</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">				if (newClock &gt; rq.getTime()) {</span>
+<span class="fc" id="L181">					return 1;</span>
+				} else {
+<span class="fc" id="L183">					return 0;</span>
+				}
+<span class="fc bfc" id="L185" title="All 4 branches covered.">			} else if (rq.getFloor() &gt;= mainRq.getFloor() &amp;&amp; rq.getFloor() &lt; elevator.getFloor()) {</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">				if (newClock &gt; rq.getTime()) {</span>
+<span class="fc" id="L187">					return 1;</span>
+				} else {
+<span class="fc" id="L189">					return 0;</span>
+				}
+<span class="fc bfc" id="L191" title="All 4 branches covered.">			} else if (rq.getFloor() &gt; elevator.getFloor() &amp;&amp; direction == Direction.UP</span>
+<span class="fc bfc" id="L192" title="All 4 branches covered.">					|| rq.getFloor() &lt; elevator.getFloor() &amp;&amp; direction == Direction.DOWN) {</span>
+<span class="fc" id="L193">				return 2;</span>
+			} else {
+<span class="fc" id="L195">				return 0;</span>
+			}
+		}
+	}
+ 
+	/**
+	 * @REQUIRES: None;
+	 * @MODIFIES: this;
+	 * @EFFECTS: (\all int i; unhandlePosition &gt;= i &gt; front; validity[i] ==
+	 *           old(validity[i - 1])&amp;&amp;rqList[i] == \old(rqList[i - 1]));
+	 *           validity[front] == \old(validity[unhandlePosition]); rqList[front]
+	 *           == unhandle;
+	 */
+	private void justifyUnhandle() {
+		int i;
+<span class="fc" id="L210">		int temp = validity[unhandlePosition];</span>
+<span class="fc bfc" id="L211" title="All 2 branches covered.">		for (i = unhandlePosition; i &gt; front; i--) {</span>
+<span class="fc" id="L212">			validity[i] = validity[i - 1];</span>
+<span class="fc" id="L213">			rqList[i] = rqList[i - 1];</span>
+		}
+<span class="fc" id="L215">		validity[front] = temp;</span>
+<span class="fc" id="L216">		rqList[front] = unhandle;</span>
+<span class="fc" id="L217">	}</span>
+
+	public int getFrontVal() {
+<span class="fc" id="L220">		return validity[front];</span>
+	}
+
+	/**
+	 * @MODIFIES: front;
+	 * @EFFECTS: front == \old(front);
+	 */
+	public void moveFront(int n) {
+<span class="fc" id="L228">		front = front + n;</span>
+<span class="fc" id="L229">	}</span>
+
+	/**
+	 * @REQUIRES: None;
+	 * @MODIFIES: validity;
+	 * @EFFECTS: (\all int i; rear &gt; i &gt;= front &amp;&amp; rqList[i].getTime() &lt;= clock;
+	 *           (validity[i] == 1 &amp;&amp; lastRq != null &amp;&amp; lastRq.equals(rqList[i]))
+	 *           ==&gt; validity[i] == 0;);
+	 */
+	public void wash(Request lastRq, double clock) {
+		int i;
+<span class="fc bfc" id="L240" title="All 4 branches covered.">		for (i = front; i &lt; rear &amp;&amp; rqList[i].getTime() &lt;= clock; i++) {</span>
+<span class="fc bfc" id="L241" title="All 4 branches covered.">			if (validity[i] == 1 &amp;&amp; lastRq != null) {</span>
+<span class="fc bfc" id="L242" title="All 2 branches covered.">				if (lastRq.equals(rqList[i])) {</span>
+<span class="fc" id="L243">					validity[i] = 0;</span>
+				}
+			}
+		}
+<span class="fc" id="L247">	}</span>
+
+	/**
+	 * @MODIFIES: System.out; this;
+	 * @EFFECTS: (parse the input str and according to the parsing result print
+	 *           relative text);
+	 */
+	public void parse(String str) {
+		// try {
+<span class="fc" id="L256">		int wrong = parseRq(str);</span>
+<span class="fc bfc" id="L257" title="All 2 branches covered.">		if (wrong != 0) {</span>
+<span class="fc" id="L258">			System.out.println(&quot;INVALID[&quot; + str + &quot;]&quot;);</span>
+		}
+		// } catch (Exception e) {
+		// System.out.println(&quot;INVALID[&quot; + str + &quot;]&quot;);
+		// }
+<span class="fc" id="L263">	}</span>
+
+	/**
+	 * @MODIFIES: this;
+	 * @EFFECTS: (str is a valid request) ==&gt; (rear == \old(rear) + 1) &amp;&amp;
+	 *           validity[rear] == 1 &amp;&amp; \result == 0; (str is not a valid request)
+	 *           ==&gt; \result != 0;
+	 */
+	private int parseRq(String str) {
+		try {
+<span class="fc" id="L273">			if (str.matches(</span>
+<span class="fc bfc" id="L274" title="All 2 branches covered.">					&quot;((\\(FR,\\+?[0-9]{1,50},((DOWN)|(UP)),\\+?[0-9]{1,50}\\))|(\\(ER,\\+?[0-9]{1,50},\\+?[0-9]{1,50}\\)))&quot;)) {</span>
+<span class="fc" id="L275">				String[] strs = str.split(&quot;[\\(\\),]&quot;);</span>
+<span class="fc bfc" id="L276" title="All 2 branches covered.">				if (strs.length == 5) {</span>
+<span class="fc" id="L277">					Requester from = Requester.FR;</span>
+<span class="fc" id="L278">					int askfloor = Integer.parseInt(strs[2]);</span>
+<span class="fc bfc" id="L279" title="All 2 branches covered.">					Direction direction = strs[3].equals(&quot;UP&quot;) ? Direction.UP : Direction.DOWN;</span>
+<span class="fc" id="L280">					long time = Long.parseLong(strs[4]);</span>
+<span class="fc bfc" id="L281" title="All 4 branches covered.">					if (askfloor &lt; 1 || askfloor &gt; 10)</span>
+<span class="fc" id="L282">						return 1;</span>
+<span class="fc bfc" id="L283" title="All 2 branches covered.">					if (time &gt; 4294967295L)</span>
+<span class="fc" id="L284">						return 1;</span>
+<span class="fc bfc" id="L285" title="All 4 branches covered.">					if (rear == 0 &amp;&amp; time != 0L)</span>
+<span class="fc" id="L286">						return 3;</span>
+<span class="fc bfc" id="L287" title="All 4 branches covered.">					if (askfloor == 1 &amp;&amp; direction == Direction.DOWN)</span>
+<span class="fc" id="L288">						return 5;</span>
+<span class="fc bfc" id="L289" title="All 4 branches covered.">					if (askfloor == 10 &amp;&amp; direction == Direction.UP)</span>
+<span class="fc" id="L290">						return 6;</span>
+<span class="fc bfc" id="L291" title="All 4 branches covered.">					if (rear != 0 &amp;&amp; time &lt; rqList[rear - 1].getTime())</span>
+<span class="fc" id="L292">						return 7;</span>
+<span class="fc" id="L293">					validity[rear] = 1;</span>
+<span class="fc" id="L294">					rqList[rear] = new Request(from, askfloor, direction, time, rear);</span>
+<span class="fc bfc" id="L295" title="All 4 branches covered.">					if (rear == 0 &amp;&amp; !rqList[rear].toString().equals(&quot;FR,1,UP,0&quot;)) {</span>
+<span class="fc" id="L296">						validity[rear] = 0;</span>
+<span class="fc" id="L297">						return 1;</span>
+					}
+<span class="fc" id="L299">					rear++;</span>
+<span class="fc" id="L300">				} else {</span>
+<span class="fc" id="L301">					Requester from = Requester.ER;</span>
+<span class="fc" id="L302">					int target = Integer.parseInt(strs[2]);</span>
+<span class="fc" id="L303">					long time = Long.parseLong(strs[3]);</span>
+<span class="fc bfc" id="L304" title="All 4 branches covered.">					if (target &lt; 1 || target &gt; 10)</span>
+<span class="fc" id="L305">						return 1;</span>
+<span class="fc bfc" id="L306" title="All 2 branches covered.">					if (time &gt; 4294967295L)</span>
+<span class="fc" id="L307">						return 1;</span>
+<span class="fc bfc" id="L308" title="All 4 branches covered.">					if (rear == 0 &amp;&amp; time != 0L)</span>
+<span class="fc" id="L309">						return 3;</span>
+<span class="fc bfc" id="L310" title="All 4 branches covered.">					if (rear != 0 &amp;&amp; time &lt; rqList[rear - 1].getTime())</span>
+<span class="fc" id="L311">						return 7;</span>
+<span class="fc" id="L312">					validity[rear] = 1;</span>
+<span class="fc" id="L313">					rqList[rear] = new Request(from, target, time, rear);</span>
+<span class="fc bfc" id="L314" title="All 2 branches covered.">					if (rear == 0) {</span>
+<span class="fc" id="L315">						validity[rear] = 0;</span>
+<span class="fc" id="L316">						return 1;</span>
+					}
+<span class="fc" id="L318">					rear++;</span>
+				}
+<span class="fc" id="L320">				return 0;</span>
+			} else {
+<span class="fc" id="L322">				return 1;</span>
+			}
+<span class="fc" id="L324">		} catch (Exception e) {</span>
+<span class="fc" id="L325">			return 1;</span>
+		}
+	}
+
+	/**
+	 * @REQUIRES:None;
+	 * @MODIFIES:None;
+	 * @EFFECTS:(all the conditions satisfied) ==&gt; \result == true;
+	 */
+	public boolean repOK() {
+<span class="fc bfc" id="L335" title="All 4 branches covered.">		return rqList != null &amp;&amp; validity != null;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>ElevatorTest (2018-6-6 15:22:57)</div></body></html>

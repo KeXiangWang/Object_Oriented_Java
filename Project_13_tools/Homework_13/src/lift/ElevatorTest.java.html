@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>ElevatorTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">ElevatorTest (2018-6-6 15:22:57)</a> &gt; <a href="../../index.html" class="el_group">Homework_13</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">lift</a> &gt; <span class="el_source">ElevatorTest.java</span></div><h1>ElevatorTest.java</h1><pre class="source lang-java linenums">package lift;
+
+import static org.junit.Assert.*;
+
+import java.io.FileInputStream;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import java.lang.reflect.*;
+
+<span class="fc" id="L13">public class ElevatorTest {</span>
+<span class="fc" id="L14">	private static int cnt = 0;</span>
+
+	@BeforeClass
+	public static void setUpBeforeClass() {
+<span class="fc" id="L18">		System.out.println(&quot;/**********ElevatorTest************/&quot;);</span>
+<span class="fc" id="L19">	}</span>
+
+	@Before
+	public void before() {
+
+<span class="fc" id="L24">		System.out.println(&quot;--------------test &quot; + cnt + &quot;---------------&quot;);</span>
+<span class="fc" id="L25">	}</span>
+
+	@After
+	public void after() {
+<span class="fc" id="L29">		System.out.println(&quot;------------------------------------&quot;);</span>
+<span class="fc" id="L30">	}</span>
+
+	@Test
+	public void test0Main() { 
+		try {
+<span class="fc" id="L35">			cnt++;</span>
+<span class="fc" id="L36">			FileInputStream file1 = new FileInputStream(&quot;testMain.txt&quot;);</span>
+<span class="fc" id="L37">			System.setIn(file1); </span>
+<span class="fc" id="L38">			Main.main(null);</span>
+<span class="fc" id="L39">			System.out.println(&quot;+++++++++++++++++++++++++++++++++&quot;);</span>
+<span class="fc" id="L40">			FileInputStream file2 = new FileInputStream(&quot;testNone.txt&quot;);</span>
+<span class="fc" id="L41">			System.setIn(file2); </span>
+<span class="fc" id="L42">			Main.main(null); </span>
+<span class="fc" id="L43">			System.out.println(&quot;+++++++++++++++++++++++++++++++++&quot;);</span>
+<span class="fc" id="L44">			FileInputStream file3 = new FileInputStream(&quot;testRUN.txt&quot;);</span>
+<span class="fc" id="L45">			System.setIn(file3);  </span>
+<span class="fc" id="L46">			Main.main(null);</span>
+<span class="fc" id="L47">			System.out.println(&quot;+++++++++++++++++++++++++++++++++&quot;);</span>
+<span class="fc" id="L48">			FileInputStream file4 = new FileInputStream(&quot;testTooMuch.txt&quot;);</span>
+<span class="fc" id="L49">			System.setIn(file4);  </span>
+<span class="fc" id="L50">			Main.main(null);</span>
+<span class="fc" id="L51">			System.out.println(&quot;+++++++++++++++++++++++++++++++++&quot;);</span>
+<span class="fc" id="L52">			Main main = new Main();</span>
+<span class="fc" id="L53">			assertEquals(true, main.repOK());</span>
+<span class="fc" id="L54">			throw new Exception(&quot;&quot;); </span>
+<span class="fc" id="L55">		} catch (Throwable e) {</span>
+<span class="fc" id="L56">			System.out.println(&quot;interesting&quot;);</span>
+		}
+<span class="fc" id="L58">	}</span>
+
+	@Test
+	public void test1Invalid() {
+<span class="fc" id="L62">		cnt++;</span>
+<span class="fc" id="L63">		Queue queue = new Queue();</span>
+<span class="fc" id="L64">		SubScheduler scheduler = new SubScheduler();</span>
+<span class="fc" id="L65">		Elevator elevator = new Elevator();</span>
+<span class="fc" id="L66">		assertEquals(0, queue.getSize());</span>
+<span class="fc" id="L67">		scheduler.schedule(queue, elevator);</span>
+<span class="fc" id="L68">		queue.parse(&quot;(FR,,UP,0)&quot;);</span>
+<span class="fc" id="L69">		queue.parse(&quot;(FR,6,UP,0)&quot;); // first test</span>
+<span class="fc" id="L70">		queue.parse(&quot;(FR,1,UP,5)&quot;);</span>
+<span class="fc" id="L71">		queue.parse(&quot;(FR,1,DOWN,0)&quot;);</span>
+<span class="fc" id="L72">		queue.parse(&quot;(FR,10,UP,0)&quot;);</span>
+<span class="fc" id="L73">		queue.parse(&quot;(FR,1,UP,-1)&quot;);</span>
+<span class="fc" id="L74">		queue.parse(&quot;(FR,1,UP,9999999999999)&quot;);</span>
+<span class="fc" id="L75">		queue.parse(&quot;(FR,1,UP,999999999999999999999999999999999999999)&quot;);</span>
+<span class="fc" id="L76">		queue.parse(&quot;(FR,-1,DOWN,0)&quot;);</span>
+<span class="fc" id="L77">		queue.parse(&quot;(FR,12,UP,0)&quot;);</span>
+<span class="fc" id="L78">		queue.parse(&quot;(FR,0,UP,5)&quot;);</span>
+<span class="fc" id="L79">		queue.parse(</span>
+<span class="fc" id="L80">				&quot;(FR,000000000000000000000000000000000000000000000000000000000000000000000000000000000000001,UP,0)&quot;);</span>
+<span class="fc" id="L81">		queue.parse(&quot;(FR,111111111111111111111111111111111111111111,UP,0)&quot;);</span>
+<span class="fc" id="L82">		assertEquals(0, queue.getSize());</span>
+<span class="fc" id="L83">		queue.parse(&quot;(FR,1,UP,0)&quot;);</span>
+<span class="fc" id="L84">		queue.parse(&quot;(FR,5,UP,3)&quot;);</span>
+<span class="fc" id="L85">		queue.parse(&quot;(FR,5,UP,1)&quot;);</span>
+<span class="fc" id="L86">		assertEquals(2, queue.getSize());</span>
+<span class="fc" id="L87">		queue = new Queue();</span>
+<span class="fc" id="L88">		queue.parse(&quot;(ER,0,0)&quot;);</span>
+<span class="fc" id="L89">		queue.parse(&quot;(ER,-1,0)&quot;);</span>
+<span class="fc" id="L90">		queue.parse(&quot;(ER,11,0)&quot;);</span>
+<span class="fc" id="L91">		queue.parse(&quot;(ER,-1,0)&quot;);</span>
+<span class="fc" id="L92">		queue.parse(&quot;(ER,11,0)&quot;);</span>
+<span class="fc" id="L93">		queue.parse(&quot;(ER,1,-1)&quot;);</span>
+<span class="fc" id="L94">		queue.parse(&quot;(ER,1,99999999999999999)&quot;);</span>
+<span class="fc" id="L95">		queue.parse(&quot;(ER,1,0)&quot;);</span>
+<span class="fc" id="L96">		queue.parse(&quot;(ER,1,1)&quot;);</span>
+<span class="fc" id="L97">		assertEquals(0, queue.getSize());</span>
+<span class="fc" id="L98">		queue.parse(&quot;(FR,1,UP,0)&quot;);</span>
+<span class="fc" id="L99">		queue.parse(&quot;(ER,1,15)&quot;);</span>
+<span class="fc" id="L100">		queue.parse(&quot;(ER,1,5)&quot;);</span>
+<span class="fc" id="L101">		assertEquals(2, queue.getSize());</span>
+<span class="fc" id="L102">		Request request = new Request(Requester.FR, 2, 2, 2);</span>
+<span class="fc" id="L103">		request.equals(request);</span>
+<span class="fc" id="L104">		request.equals(new Object());</span>
+		try {
+<span class="fc" id="L106">			queue.repOK();</span>
+<span class="fc" id="L107">			Class&lt;?&gt; classType = queue.getClass();</span>
+<span class="fc" id="L108">			Field a = classType.getDeclaredField(&quot;rqList&quot;);</span>
+<span class="fc" id="L109">			Field b = classType.getDeclaredField(&quot;validity&quot;);</span>
+<span class="fc" id="L110">			a.setAccessible(true); // 抑制Java对修饰符的检查</span>
+<span class="fc" id="L111">			b.setAccessible(true); // 抑制Java对修饰符的检查</span>
+<span class="fc" id="L112">			a.set(queue, null);</span>
+<span class="fc" id="L113">			queue.repOK();</span>
+<span class="fc" id="L114">			a.set(queue, new Request[5]);</span>
+<span class="fc" id="L115">			b.set(queue, null);</span>
+<span class="fc" id="L116">			queue.repOK();</span>
+<span class="fc" id="L117">			a.set(queue, null);</span>
+<span class="fc" id="L118">			b.set(queue, null);</span>
+<span class="fc" id="L119">			queue.repOK();</span>
+			// assertEquals(0, rq.getcnt());//assert rq.getcnt() == 0;
+<span class="fc" id="L121">			throw new Exception(&quot;&quot;); </span>
+<span class="fc" id="L122">		} catch (Exception e) {</span>
+		}
+
+<span class="fc" id="L125">	}</span>
+
+	@Test
+	public void test2() {
+<span class="fc" id="L129">		cnt++;</span>
+<span class="fc" id="L130">		Queue queue = new Queue();</span>
+<span class="fc" id="L131">		queue.parse(&quot;(FR,1,UP,0)&quot;);</span>
+<span class="fc" id="L132">		queue.parse(&quot;(ER,5,3)&quot;);</span>
+<span class="fc" id="L133">		queue.parse(&quot;(ER,2,4)&quot;);</span>
+<span class="fc" id="L134">		queue.parse(&quot;(ER,1,6)&quot;);</span>
+<span class="fc" id="L135">		queue.parse(&quot;(FR,2,UP,9)&quot;);</span>
+<span class="fc" id="L136">		queue.parse(&quot;(FR,10,DOWN,13)&quot;);</span>
+<span class="fc" id="L137">		queue.parse(&quot;(ER,4,13)&quot;);</span>
+<span class="fc" id="L138">		queue.parse(&quot;(FR,6,DOWN,13)&quot;); </span>
+<span class="fc" id="L139">		queue.parse(&quot;(ER,5,14)&quot;);</span>
+<span class="fc" id="L140">		queue.parse(&quot;(FR,8,DOWN,16)&quot;);</span>
+<span class="fc" id="L141">		queue.parse(&quot;(FR,7,UP,19)&quot;);</span>
+<span class="fc" id="L142">		queue.parse(&quot;(FR,6,UP,20)&quot;);</span>
+<span class="fc" id="L143">		queue.parse(&quot;(ER,1,25)&quot;);</span>
+<span class="fc" id="L144">		queue.parse(&quot;(FR,6,DOWN,26)&quot;);</span>
+<span class="fc" id="L145">		queue.parse(&quot;(ER,3,26)&quot;);</span>
+<span class="fc" id="L146">		queue.parse(&quot;(ER,6,28)&quot;);</span>
+<span class="fc" id="L147">		queue.parse(&quot;(FR,6,DOWN,28)&quot;);</span>
+<span class="fc" id="L148">		queue.parse(&quot;(FR,10,DOWN,29)&quot;);</span>
+<span class="fc" id="L149">		queue.parse(&quot;(FR,7,DOWN,30)&quot;);</span>
+<span class="fc" id="L150">		queue.parse(&quot;(FR,3,UP,32)&quot;);</span>
+<span class="fc" id="L151">		queue.parse(&quot;(ER,9,32)&quot;);</span>
+<span class="fc" id="L152">		queue.parse(&quot;(FR,3,UP,36)&quot;);</span>
+<span class="fc" id="L153">		queue.parse(&quot;(FR,1,UP,40)&quot;);</span>
+<span class="fc" id="L154">		queue.parse(&quot;(ER,9,41)&quot;);</span>
+<span class="fc" id="L155">		queue.parse(&quot;(ER,8,41)&quot;);</span>
+<span class="fc" id="L156">		queue.parse(&quot;(ER,1,41)&quot;);</span>
+<span class="fc" id="L157">		queue.parse(&quot;(FR,9,DOWN,43)&quot;);</span>
+<span class="fc" id="L158">		queue.parse(&quot;(ER,7,43)&quot;);</span>
+<span class="fc" id="L159">		queue.parse(&quot;(FR,1,UP,44)&quot;);</span>
+<span class="fc" id="L160">		queue.parse(&quot;(FR,2,DOWN,45)&quot;);</span>
+<span class="fc" id="L161">		queue.parse(&quot;(ER,5,46)&quot;);</span>
+<span class="fc" id="L162">		queue.parse(&quot;(FR,2,UP,47)&quot;);</span>
+<span class="fc" id="L163">		queue.parse(&quot;(FR,9,DOWN,47)&quot;);</span>
+<span class="fc" id="L164">		queue.parse(&quot;(FR,8,UP,47)&quot;);</span>
+<span class="fc" id="L165">		queue.parse(&quot;(FR,2,DOWN,49)&quot;);</span>
+<span class="fc" id="L166">		queue.parse(&quot;(FR,10,DOWN,49)&quot;);</span>
+<span class="fc" id="L167">		queue.parse(&quot;(ER,10,50)&quot;);</span>
+<span class="fc" id="L168">		queue.parse(&quot;(ER,3,52)&quot;);</span>
+<span class="fc" id="L169">		queue.parse(&quot;(ER,2,53)&quot;);</span>
+<span class="fc" id="L170">		queue.parse(&quot;(FR,10,DOWN,55)&quot;);</span>
+<span class="fc" id="L171">		queue.parse(&quot;(ER,1,55)&quot;);</span>
+<span class="fc" id="L172">		queue.parse(&quot;(FR,9,DOWN,56)&quot;);</span>
+<span class="fc" id="L173">		queue.parse(&quot;(ER,1,59)&quot;);</span>
+<span class="fc" id="L174">		queue.parse(&quot;(FR,1,UP,62)&quot;);</span>
+<span class="fc" id="L175">		queue.parse(&quot;(FR,9,UP,64)&quot;);</span>
+<span class="fc" id="L176">		queue.parse(&quot;(FR,4,UP,64)&quot;);</span>
+<span class="fc" id="L177">		queue.parse(&quot;(ER,3,67)&quot;);</span>
+<span class="fc" id="L178">		queue.parse(&quot;(ER,3,69)&quot;);</span>
+<span class="fc" id="L179">		queue.parse(&quot;(FR,10,DOWN,69)&quot;);</span>
+<span class="fc" id="L180">		queue.parse(&quot;(ER,3,71)&quot;);</span>
+<span class="fc" id="L181">		queue.parse(&quot;(ER,1,73)&quot;);</span>
+<span class="fc" id="L182">		queue.parse(&quot;(FR,3,UP,74)&quot;);</span>
+<span class="fc" id="L183">		queue.parse(&quot;(ER,8,74)&quot;);</span>
+<span class="fc" id="L184">		queue.parse(&quot;(FR,9,DOWN,74)&quot;);</span>
+<span class="fc" id="L185">		queue.parse(&quot;(ER,8,75)&quot;);</span>
+<span class="fc" id="L186">		queue.parse(&quot;(ER,8,76)&quot;);</span>
+<span class="fc" id="L187">		queue.parse(&quot;(FR,8,DOWN,76)&quot;);</span>
+<span class="fc" id="L188">		queue.parse(&quot;(ER,8,78)&quot;);</span>
+<span class="fc" id="L189">		queue.parse(&quot;(ER,3,78)&quot;);</span>
+<span class="fc" id="L190">		queue.parse(&quot;(ER,4,80)&quot;);</span>
+<span class="fc" id="L191">		queue.parse(&quot;(ER,4,82)&quot;);</span>
+<span class="fc" id="L192">		queue.parse(&quot;(ER,8,84)&quot;);</span>
+<span class="fc" id="L193">		queue.parse(&quot;(FR,3,UP,84)&quot;);</span>
+<span class="fc" id="L194">		queue.parse(&quot;(ER,10,84)&quot;);</span>
+<span class="fc" id="L195">		queue.parse(&quot;(FR,4,DOWN,84)&quot;);</span>
+<span class="fc" id="L196">		queue.parse(&quot;(FR,4,DOWN,84)&quot;);</span>
+<span class="fc" id="L197">		queue.parse(&quot;(ER,8,85)&quot;);</span>
+<span class="fc" id="L198">		queue.parse(&quot;(FR,2,DOWN,88)&quot;);</span>
+<span class="fc" id="L199">		queue.parse(&quot;(ER,10,90)&quot;);</span>
+<span class="fc" id="L200">		queue.parse(&quot;(ER,5,90)&quot;);</span>
+<span class="fc" id="L201">		queue.parse(&quot;(ER,7,94)&quot;);</span>
+<span class="fc" id="L202">		queue.parse(&quot;(ER,7,94)&quot;);</span>
+<span class="fc" id="L203">		queue.parse(&quot;(FR,8,UP,96)&quot;);</span>
+<span class="fc" id="L204">		queue.parse(&quot;(ER,7,96)&quot;);</span>
+<span class="fc" id="L205">		queue.parse(&quot;(ER,8,97)&quot;);</span>
+<span class="fc" id="L206">		queue.parse(&quot;(FR,5,UP,99)&quot;);</span>
+<span class="fc" id="L207">		queue.parse(&quot;(FR,8,UP,102)&quot;);</span>
+<span class="fc" id="L208">		queue.parse(&quot;(ER,7,103)&quot;);</span>
+<span class="fc" id="L209">		queue.parse(&quot;(ER,5,103)&quot;);</span>
+<span class="fc" id="L210">		queue.parse(&quot;(ER,7,106)&quot;);</span>
+<span class="fc" id="L211">		queue.parse(&quot;(ER,6,106)&quot;);</span>
+<span class="fc" id="L212">		queue.parse(&quot;(ER,6,106)&quot;);</span>
+<span class="fc" id="L213">		queue.parse(&quot;(ER,2,108)&quot;);</span>
+<span class="fc" id="L214">		queue.parse(&quot;(ER,8,108)&quot;);</span>
+<span class="fc" id="L215">		queue.parse(&quot;(FR,7,UP,110)&quot;);</span>
+<span class="fc" id="L216">		queue.parse(&quot;(FR,5,DOWN,114)&quot;);</span>
+<span class="fc" id="L217">		queue.parse(&quot;(ER,1,115)&quot;);</span>
+<span class="fc" id="L218">		queue.parse(&quot;(FR,8,DOWN,116)&quot;);</span>
+<span class="fc" id="L219">		queue.parse(&quot;(FR,3,UP,118)&quot;);</span>
+<span class="fc" id="L220">		queue.parse(&quot;(ER,7,119)&quot;);</span>
+<span class="fc" id="L221">		queue.parse(&quot;(ER,1,119)&quot;);</span>
+<span class="fc" id="L222">		queue.parse(&quot;(ER,7,119)&quot;);</span>
+<span class="fc" id="L223">		queue.parse(&quot;(ER,5,122)&quot;);</span>
+<span class="fc" id="L224">		queue.parse(&quot;(FR,2,DOWN,127)&quot;);</span>
+<span class="fc" id="L225">		queue.parse(&quot;(FR,8,DOWN,128)&quot;);</span>
+<span class="fc" id="L226">		queue.parse(&quot;(FR,5,UP,128)&quot;);</span>
+<span class="fc" id="L227">		queue.parse(&quot;(FR,6,DOWN,130)&quot;);</span>
+<span class="fc" id="L228">		queue.parse(&quot;(FR,5,DOWN,134)&quot;);</span>
+<span class="fc" id="L229">		queue.parse(&quot;(FR,5,DOWN,134)&quot;);</span>
+<span class="fc" id="L230">		queue.parse(&quot;(FR,5,DOWN,134)&quot;);</span>
+<span class="fc" id="L231">		queue.parse(&quot;RUN&quot;);</span>
+		// assertEquals(0, rq.getcnt());//assert rq.getcnt() == 0;
+<span class="fc" id="L233">		SubScheduler scheduler = new SubScheduler();</span>
+<span class="fc" id="L234">		scheduler.repOK();</span>
+<span class="fc" id="L235">		Elevator elevator = new Elevator();</span>
+<span class="fc" id="L236">		elevator.repOK();</span>
+<span class="fc bfc" id="L237" title="All 2 branches covered.">		while (!queue.end()) {</span>
+<span class="fc" id="L238">			scheduler.command(queue, elevator);</span>
+		}
+<span class="fc" id="L240">		assertEquals(0, queue.getSize());</span>
+<span class="fc" id="L241">	}</span>
+
+	@Test
+	public void test3() {
+<span class="fc" id="L245">		cnt++;</span>
+<span class="fc" id="L246">		Queue queue = new Queue();</span>
+<span class="fc" id="L247">		queue.parse(&quot;(FR,1,UP,0)&quot;);</span>
+<span class="fc" id="L248">		queue.parse(&quot;(ER,5,3)&quot;);</span>
+<span class="fc" id="L249">		queue.parse(&quot;(ER,2,4)&quot;);</span>
+<span class="fc" id="L250">		queue.parse(&quot;(ER,1,6)&quot;);</span>
+<span class="fc" id="L251">		queue.parse(&quot;(FR,2,UP,9)&quot;);</span>
+<span class="fc" id="L252">		queue.parse(&quot;(FR,10,DOWN,13)&quot;);</span>
+<span class="fc" id="L253">		queue.parse(&quot;(ER,4,13)&quot;);</span>
+<span class="fc" id="L254">		queue.parse(&quot;(FR,6,DOWN,13)&quot;);</span>
+<span class="fc" id="L255">		queue.parse(&quot;(ER,5,14)&quot;);</span>
+<span class="fc" id="L256">		queue.parse(&quot;(FR,8,DOWN,16)&quot;);</span>
+<span class="fc" id="L257">		queue.parse(&quot;(FR,7,UP,19)&quot;);</span>
+<span class="fc" id="L258">		queue.parse(&quot;(FR,6,UP,20)&quot;);</span>
+<span class="fc" id="L259">		queue.parse(&quot;(ER,1,25)&quot;);</span>
+<span class="fc" id="L260">		queue.parse(&quot;(FR,6,DOWN,26)&quot;);</span>
+<span class="fc" id="L261">		queue.parse(&quot;(ER,3,26)&quot;);</span>
+<span class="fc" id="L262">		queue.parse(&quot;(ER,6,28)&quot;);</span>
+<span class="fc" id="L263">		queue.parse(&quot;(FR,6,DOWN,28)&quot;);</span>
+<span class="fc" id="L264">		queue.parse(&quot;(FR,10,DOWN,29)&quot;);</span>
+<span class="fc" id="L265">		queue.parse(&quot;(FR,7,DOWN,30)&quot;);</span>
+<span class="fc" id="L266">		queue.parse(&quot;(FR,3,UP,32)&quot;);</span>
+<span class="fc" id="L267">		queue.parse(&quot;(ER,9,32)&quot;);</span>
+<span class="fc" id="L268">		queue.parse(&quot;(FR,3,UP,36)&quot;);</span>
+<span class="fc" id="L269">		queue.parse(&quot;(FR,1,UP,40)&quot;);</span>
+<span class="fc" id="L270">		queue.parse(&quot;(ER,9,41)&quot;);</span>
+<span class="fc" id="L271">		queue.parse(&quot;(ER,8,41)&quot;);</span>
+<span class="fc" id="L272">		queue.parse(&quot;(ER,1,41)&quot;);</span>
+<span class="fc" id="L273">		queue.parse(&quot;(FR,9,DOWN,43)&quot;);</span>
+<span class="fc" id="L274">		queue.parse(&quot;(ER,7,43)&quot;);</span>
+<span class="fc" id="L275">		queue.parse(&quot;(FR,1,UP,44)&quot;);</span>
+<span class="fc" id="L276">		queue.parse(&quot;(FR,2,DOWN,45)&quot;);</span>
+<span class="fc" id="L277">		queue.parse(&quot;(ER,5,46)&quot;);</span>
+<span class="fc" id="L278">		queue.parse(&quot;(FR,2,UP,47)&quot;);</span>
+<span class="fc" id="L279">		queue.parse(&quot;(FR,9,DOWN,47)&quot;);</span>
+<span class="fc" id="L280">		queue.parse(&quot;(FR,8,UP,47)&quot;);</span>
+<span class="fc" id="L281">		queue.parse(&quot;(FR,2,DOWN,49)&quot;);</span>
+<span class="fc" id="L282">		queue.parse(&quot;(FR,10,DOWN,49)&quot;);</span>
+<span class="fc" id="L283">		queue.parse(&quot;(ER,10,50)&quot;);</span>
+<span class="fc" id="L284">		queue.parse(&quot;(ER,3,52)&quot;);</span>
+<span class="fc" id="L285">		queue.parse(&quot;(ER,2,53)&quot;);</span>
+<span class="fc" id="L286">		queue.parse(&quot;(FR,10,DOWN,55)&quot;);</span>
+<span class="fc" id="L287">		queue.parse(&quot;(ER,1,55)&quot;);</span>
+<span class="fc" id="L288">		queue.parse(&quot;(FR,9,DOWN,56)&quot;);</span>
+<span class="fc" id="L289">		queue.parse(&quot;(ER,1,59)&quot;);</span>
+<span class="fc" id="L290">		queue.parse(&quot;(FR,1,UP,62)&quot;);</span>
+<span class="fc" id="L291">		queue.parse(&quot;(FR,9,UP,64)&quot;);</span>
+<span class="fc" id="L292">		queue.parse(&quot;(FR,4,UP,64)&quot;);</span>
+<span class="fc" id="L293">		queue.parse(&quot;(ER,3,67)&quot;);</span>
+<span class="fc" id="L294">		queue.parse(&quot;(ER,3,69)&quot;);</span>
+<span class="fc" id="L295">		queue.parse(&quot;(FR,10,DOWN,69)&quot;);</span>
+<span class="fc" id="L296">		queue.parse(&quot;(ER,3,71)&quot;);</span>
+<span class="fc" id="L297">		queue.parse(&quot;(ER,1,73)&quot;);</span>
+<span class="fc" id="L298">		queue.parse(&quot;(FR,3,UP,74)&quot;);</span>
+<span class="fc" id="L299">		queue.parse(&quot;(ER,8,74)&quot;);</span>
+<span class="fc" id="L300">		queue.parse(&quot;(FR,9,DOWN,74)&quot;);</span>
+<span class="fc" id="L301">		queue.parse(&quot;(ER,8,75)&quot;);</span>
+<span class="fc" id="L302">		queue.parse(&quot;(ER,8,76)&quot;);</span>
+<span class="fc" id="L303">		queue.parse(&quot;(FR,8,DOWN,76)&quot;);</span>
+<span class="fc" id="L304">		queue.parse(&quot;(ER,8,78)&quot;);</span>
+<span class="fc" id="L305">		queue.parse(&quot;(ER,3,78)&quot;);</span>
+<span class="fc" id="L306">		queue.parse(&quot;(ER,4,80)&quot;);</span>
+<span class="fc" id="L307">		queue.parse(&quot;(ER,4,82)&quot;);</span>
+<span class="fc" id="L308">		queue.parse(&quot;(ER,8,84)&quot;);</span>
+<span class="fc" id="L309">		queue.parse(&quot;(FR,3,UP,84)&quot;);</span>
+<span class="fc" id="L310">		queue.parse(&quot;(ER,10,84)&quot;);</span>
+<span class="fc" id="L311">		queue.parse(&quot;(FR,4,DOWN,84)&quot;);</span>
+<span class="fc" id="L312">		queue.parse(&quot;(FR,4,DOWN,84)&quot;);</span>
+<span class="fc" id="L313">		queue.parse(&quot;(ER,8,85)&quot;);</span>
+<span class="fc" id="L314">		queue.parse(&quot;(FR,2,DOWN,88)&quot;);</span>
+<span class="fc" id="L315">		queue.parse(&quot;(ER,10,90)&quot;);</span>
+<span class="fc" id="L316">		queue.parse(&quot;(ER,5,90)&quot;);</span>
+<span class="fc" id="L317">		queue.parse(&quot;(ER,7,94)&quot;);</span>
+<span class="fc" id="L318">		queue.parse(&quot;(ER,7,94)&quot;);</span>
+<span class="fc" id="L319">		queue.parse(&quot;(FR,8,UP,96)&quot;);</span>
+<span class="fc" id="L320">		queue.parse(&quot;(ER,7,96)&quot;);</span>
+<span class="fc" id="L321">		queue.parse(&quot;(ER,8,97)&quot;);</span>
+<span class="fc" id="L322">		queue.parse(&quot;(FR,5,UP,99)&quot;);</span>
+<span class="fc" id="L323">		queue.parse(&quot;(FR,8,UP,102)&quot;);</span>
+<span class="fc" id="L324">		queue.parse(&quot;(ER,7,103)&quot;);</span>
+<span class="fc" id="L325">		queue.parse(&quot;(ER,5,103)&quot;);</span>
+<span class="fc" id="L326">		queue.parse(&quot;(ER,7,106)&quot;);</span>
+<span class="fc" id="L327">		queue.parse(&quot;(ER,6,106)&quot;);</span>
+<span class="fc" id="L328">		queue.parse(&quot;(ER,6,106)&quot;);</span>
+<span class="fc" id="L329">		queue.parse(&quot;(ER,2,108)&quot;);</span>
+<span class="fc" id="L330">		queue.parse(&quot;(ER,8,108)&quot;);</span>
+<span class="fc" id="L331">		queue.parse(&quot;(FR,7,UP,110)&quot;);</span>
+<span class="fc" id="L332">		queue.parse(&quot;(FR,5,DOWN,114)&quot;);</span>
+<span class="fc" id="L333">		queue.parse(&quot;(ER,1,115)&quot;);</span>
+<span class="fc" id="L334">		queue.parse(&quot;(FR,8,DOWN,116)&quot;);</span>
+<span class="fc" id="L335">		queue.parse(&quot;(FR,3,UP,118)&quot;);</span>
+<span class="fc" id="L336">		queue.parse(&quot;(ER,7,119)&quot;);</span>
+<span class="fc" id="L337">		queue.parse(&quot;(ER,1,119)&quot;);</span>
+<span class="fc" id="L338">		queue.parse(&quot;(ER,7,119)&quot;);</span>
+<span class="fc" id="L339">		queue.parse(&quot;(ER,5,122)&quot;);</span>
+<span class="fc" id="L340">		queue.parse(&quot;(FR,2,DOWN,127)&quot;);</span>
+<span class="fc" id="L341">		queue.parse(&quot;(FR,8,DOWN,128)&quot;);</span>
+<span class="fc" id="L342">		queue.parse(&quot;(FR,5,UP,128)&quot;);</span>
+<span class="fc" id="L343">		queue.parse(&quot;(FR,6,DOWN,130)&quot;);</span>
+<span class="fc" id="L344">		queue.parse(&quot;(FR,5,DOWN,134)&quot;);</span>
+<span class="fc" id="L345">		queue.parse(&quot;RUN&quot;);</span>
+		//assert rq.getcnt() == 0;
+<span class="fc" id="L347">		SubScheduler scheduler = new SubScheduler();</span>
+<span class="fc" id="L348">		scheduler.repOK();</span>
+<span class="fc" id="L349">		Elevator elevator = new Elevator();</span>
+<span class="fc" id="L350">		elevator.repOK();</span>
+<span class="fc bfc" id="L351" title="All 2 branches covered.">		while (!queue.end()) {</span>
+<span class="fc" id="L352">			scheduler.command(queue, elevator);</span>
+		}
+<span class="fc" id="L354">		assertEquals(0, queue.getSize());</span>
+<span class="fc" id="L355">		assertEquals(5, elevator.getFloor());</span>
+<span class="fc" id="L356">		assertEquals(140.5, elevator.getClock(), 0); </span>
+<span class="fc" id="L357">	}</span>
+	@Test
+	public void test4() {
+<span class="fc" id="L360">		cnt++;</span>
+<span class="fc" id="L361">		Queue queue = new Queue();</span>
+<span class="fc" id="L362">		queue.parse(&quot;(FR,1,UP,0)&quot;);</span>
+<span class="fc" id="L363">		queue.parse(&quot;(ER,5,0)&quot;);</span>
+<span class="fc" id="L364">		queue.parse(&quot;(FR,5,UP,3)&quot;);</span>
+<span class="fc" id="L365">		queue.parse(&quot;(FR,5,DOWN,4)&quot;);</span>
+<span class="fc" id="L366">		queue.parse(&quot;(ER,8,6)&quot;);</span>
+<span class="fc" id="L367">		queue.parse(&quot;(ER,6,7)&quot;);</span>
+<span class="fc" id="L368">		queue.parse(&quot;(FR,7,DOWN,10)&quot;);</span>
+<span class="fc" id="L369">		queue.parse(&quot;(FR,4,UP,13)&quot;);</span>
+<span class="fc" id="L370">		queue.parse(&quot;(FR,7,UP,15)&quot;);</span>
+<span class="fc" id="L371">		queue.parse(&quot;(ER,7,16)&quot;);</span>
+<span class="fc" id="L372">		queue.parse(&quot;(ER,10,19)&quot;);</span>
+<span class="fc" id="L373">		queue.parse(&quot;(FR,10,DOWN,21)&quot;);</span>
+<span class="fc" id="L374">		queue.parse(&quot;(FR,2,UP,24)&quot;);</span>
+<span class="fc" id="L375">		queue.parse(&quot;(ER,5,27)&quot;);</span>
+<span class="fc" id="L376">		queue.parse(&quot;(ER,4,28)&quot;);</span>
+<span class="fc" id="L377">		queue.parse(&quot;(FR,5,UP,31)&quot;);</span>
+<span class="fc" id="L378">		queue.parse(&quot;(ER,10,34)&quot;);</span>
+<span class="fc" id="L379">		queue.parse(&quot;(ER,10,35)&quot;);</span>
+<span class="fc" id="L380">		queue.parse(&quot;(FR,6,UP,36)&quot;);</span>
+<span class="fc" id="L381">		queue.parse(&quot;(FR,7,UP,36)&quot;);</span>
+<span class="fc" id="L382">		queue.parse(&quot;(FR,9,UP,36)&quot;);</span>
+<span class="fc" id="L383">		queue.parse(&quot;(ER,10,36)&quot;);</span>
+<span class="fc" id="L384">		queue.parse(&quot;(FR,7,DOWN,38)&quot;);</span>
+<span class="fc" id="L385">		queue.parse(&quot;(ER,10,40)&quot;);</span>
+<span class="fc" id="L386">		queue.parse(&quot;(ER,5,40)&quot;);</span>
+<span class="fc" id="L387">		queue.parse(&quot;(FR,7,UP,40)&quot;);</span>
+<span class="fc" id="L388">		queue.parse(&quot;(ER,5,40)&quot;);</span>
+<span class="fc" id="L389">		queue.parse(&quot;(ER,4,40)&quot;);</span>
+<span class="fc" id="L390">		queue.parse(&quot;(ER,9,42)&quot;);</span>
+<span class="fc" id="L391">		queue.parse(&quot;(FR,2,DOWN,44)&quot;);</span>
+<span class="fc" id="L392">		queue.parse(&quot;(ER,9,45)&quot;);</span>
+<span class="fc" id="L393">		queue.parse(&quot;(FR,8,UP,48)&quot;);</span>
+<span class="fc" id="L394">		queue.parse(&quot;(ER,2,50)&quot;);</span>
+<span class="fc" id="L395">		queue.parse(&quot;(ER,3,52)&quot;);</span>
+<span class="fc" id="L396">		queue.parse(&quot;(FR,8,DOWN,52)&quot;);</span>
+<span class="fc" id="L397">		queue.parse(&quot;(ER,7,53)&quot;);</span>
+<span class="fc" id="L398">		queue.parse(&quot;(FR,7,DOWN,53)&quot;);</span>
+<span class="fc" id="L399">		queue.parse(&quot;(ER,5,54)&quot;);</span>
+<span class="fc" id="L400">		queue.parse(&quot;(ER,1,57)&quot;);</span>
+<span class="fc" id="L401">		queue.parse(&quot;(FR,5,UP,57)&quot;);</span>
+<span class="fc" id="L402">		queue.parse(&quot;(FR,2,DOWN,58)&quot;);</span>
+<span class="fc" id="L403">		queue.parse(&quot;(ER,8,61)&quot;);</span>
+<span class="fc" id="L404">		queue.parse(&quot;(ER,6,62)&quot;);</span>
+<span class="fc" id="L405">		queue.parse(&quot;(ER,9,65)&quot;);</span>
+<span class="fc" id="L406">		queue.parse(&quot;(ER,3,66)&quot;);</span>
+<span class="fc" id="L407">		queue.parse(&quot;(FR,2,UP,68)&quot;);</span>
+<span class="fc" id="L408">		queue.parse(&quot;(ER,10,68)&quot;);</span>
+<span class="fc" id="L409">		queue.parse(&quot;(FR,9,DOWN,70)&quot;);</span>
+<span class="fc" id="L410">		queue.parse(&quot;(ER,3,71)&quot;);</span>
+<span class="fc" id="L411">		queue.parse(&quot;(FR,7,UP,72)&quot;);</span>
+<span class="fc" id="L412">		queue.parse(&quot;(FR,2,UP,75)&quot;);</span>
+<span class="fc" id="L413">		queue.parse(&quot;(ER,5,75)&quot;);</span>
+<span class="fc" id="L414">		queue.parse(&quot;(ER,4,75)&quot;);</span>
+<span class="fc" id="L415">		queue.parse(&quot;(ER,9,77)&quot;);</span>
+<span class="fc" id="L416">		queue.parse(&quot;(FR,8,DOWN,79)&quot;);</span>
+<span class="fc" id="L417">		queue.parse(&quot;(FR,9,DOWN,79)&quot;);</span>
+<span class="fc" id="L418">		queue.parse(&quot;(ER,1,80)&quot;);</span>
+<span class="fc" id="L419">		queue.parse(&quot;(ER,5,81)&quot;);</span>
+<span class="fc" id="L420">		queue.parse(&quot;(ER,6,82)&quot;);</span>
+<span class="fc" id="L421">		queue.parse(&quot;(ER,10,82)&quot;);</span>
+<span class="fc" id="L422">		queue.parse(&quot;(ER,9,82)&quot;);</span>
+<span class="fc" id="L423">		queue.parse(&quot;(ER,9,82)&quot;);</span>
+<span class="fc" id="L424">		queue.parse(&quot;(ER,4,83)&quot;);</span>
+<span class="fc" id="L425">		queue.parse(&quot;(ER,8,84)&quot;);</span>
+<span class="fc" id="L426">		queue.parse(&quot;(FR,9,UP,87)&quot;);</span>
+<span class="fc" id="L427">		queue.parse(&quot;(FR,1,UP,90)&quot;);</span>
+<span class="fc" id="L428">		queue.parse(&quot;(ER,3,93)&quot;);</span>
+<span class="fc" id="L429">		queue.parse(&quot;(FR,3,UP,94)&quot;);</span>
+<span class="fc" id="L430">		queue.parse(&quot;(ER,8,96)&quot;);</span>
+<span class="fc" id="L431">		queue.parse(&quot;(FR,6,UP,98)&quot;);</span>
+<span class="fc" id="L432">		queue.parse(&quot;(FR,3,UP,101)&quot;);</span>
+<span class="fc" id="L433">		queue.parse(&quot;(FR,9,UP,104)&quot;);</span>
+<span class="fc" id="L434">		queue.parse(&quot;(FR,6,DOWN,107)&quot;);</span>
+<span class="fc" id="L435">		queue.parse(&quot;(ER,5,109)&quot;);</span>
+<span class="fc" id="L436">		queue.parse(&quot;(FR,9,UP,111)&quot;);</span>
+<span class="fc" id="L437">		queue.parse(&quot;(ER,10,112)&quot;);</span>
+<span class="fc" id="L438">		queue.parse(&quot;(ER,3,113)&quot;);</span>
+<span class="fc" id="L439">		queue.parse(&quot;(ER,3,113)&quot;);</span>
+<span class="fc" id="L440">		queue.parse(&quot;(FR,4,DOWN,116)&quot;);</span>
+<span class="fc" id="L441">		queue.parse(&quot;(ER,2,118)&quot;);</span>
+<span class="fc" id="L442">		queue.parse(&quot;(ER,4,118)&quot;);</span>
+<span class="fc" id="L443">		queue.parse(&quot;(FR,3,DOWN,121)&quot;);</span>
+<span class="fc" id="L444">		queue.parse(&quot;(FR,8,DOWN,122)&quot;);</span>
+<span class="fc" id="L445">		queue.parse(&quot;(ER,7,124)&quot;);</span>
+<span class="fc" id="L446">		queue.parse(&quot;(ER,3,125)&quot;);</span>
+<span class="fc" id="L447">		queue.parse(&quot;(ER,5,125)&quot;);</span>
+<span class="fc" id="L448">		queue.parse(&quot;(ER,3,128)&quot;);</span>
+<span class="fc" id="L449">		queue.parse(&quot;(ER,9,129)&quot;);</span>
+<span class="fc" id="L450">		queue.parse(&quot;(ER,4,129)&quot;);</span>
+<span class="fc" id="L451">		queue.parse(&quot;(ER,8,132)&quot;);</span>
+<span class="fc" id="L452">		queue.parse(&quot;(ER,8,132)&quot;);</span>
+<span class="fc" id="L453">		queue.parse(&quot;(FR,4,DOWN,133)&quot;);</span>
+<span class="fc" id="L454">		queue.parse(&quot;(ER,7,134)&quot;);</span>
+<span class="fc" id="L455">		queue.parse(&quot;(ER,3,134)&quot;);</span>
+<span class="fc" id="L456">		queue.parse(&quot;(ER,5,134)&quot;);</span>
+<span class="fc" id="L457">		queue.parse(&quot;(ER,2,136)&quot;);</span>
+<span class="fc" id="L458">		queue.parse(&quot;(FR,4,DOWN,136)&quot;);</span>
+<span class="fc" id="L459">		queue.parse(&quot;(ER,3,139)&quot;);</span>
+<span class="fc" id="L460">		queue.parse(&quot;(FR,6,DOWN,140)&quot;);</span>
+<span class="fc" id="L461">		queue.parse(&quot;(FR,9,UP,140)&quot;);</span>
+<span class="fc" id="L462">		queue.parse(&quot;RUN&quot;);</span>
+		//assert rq.getcnt() == 0;
+<span class="fc" id="L464">		SubScheduler scheduler = new SubScheduler();</span>
+<span class="fc" id="L465">		scheduler.repOK();</span>
+<span class="fc" id="L466">		Elevator elevator = new Elevator();</span>
+<span class="fc" id="L467">		elevator.repOK();</span>
+<span class="fc bfc" id="L468" title="All 2 branches covered.">		while (!queue.end()) {</span>
+<span class="fc" id="L469">			scheduler.command(queue, elevator);</span>
+		}
+<span class="fc" id="L471">		assertEquals(0, queue.getSize());</span>
+<span class="fc" id="L472">		assertEquals(9, elevator.getFloor());</span>
+<span class="fc" id="L473">		assertEquals(148, elevator.getClock(), 0); </span>
+<span class="fc" id="L474">	}</span>
+ 
+	@Test
+	public void test5() {
+<span class="fc" id="L478">		cnt++;</span>
+<span class="fc" id="L479">		Queue queue = new Queue();</span>
+<span class="fc" id="L480">		queue.parse(&quot;(FR,1,UP,0)&quot;);</span>
+<span class="fc" id="L481">		queue.parse(&quot;(FR,5,UP,3)&quot;);</span>
+<span class="fc" id="L482">		queue.parse(&quot;(FR,9,DOWN,5)&quot;);</span>
+<span class="fc" id="L483">		queue.parse(&quot;(FR,9,DOWN,5)&quot;);</span>
+<span class="fc" id="L484">		queue.parse(&quot;(FR,9,UP,5)&quot;);</span>
+<span class="fc" id="L485">		queue.parse(&quot;(ER,9,5)&quot;);</span>
+<span class="fc" id="L486">		queue.parse(&quot;(FR,5,DOWN,20)&quot;);</span>
+<span class="fc" id="L487">		queue.parse(&quot;(FR,5,UP,20)&quot;);</span>
+<span class="fc" id="L488">		queue.parse(&quot;(ER,5,20)&quot;);</span>
+<span class="fc" id="L489">		queue.parse(&quot;(FR,9,DOWN,35)&quot;);</span>
+<span class="fc" id="L490">		queue.parse(&quot;(FR,7,UP,35)&quot;);</span>
+<span class="fc" id="L491">		queue.parse(&quot;(FR,8,UP,35)&quot;);</span>
+		// assertEquals(0, rq.getcnt());//assert rq.getcnt() == 0;
+<span class="fc" id="L493">		SubScheduler scheduler = new SubScheduler();</span>
+<span class="fc" id="L494">		Elevator elevator = new Elevator();</span>
+<span class="fc bfc" id="L495" title="All 2 branches covered.">		while (!queue.end()) {</span>
+<span class="fc" id="L496">			scheduler.command(queue, elevator);</span>
+		}
+<span class="fc" id="L498">	}</span>
+	
+	@Test
+	public void test6() {
+<span class="fc" id="L502">		cnt++;</span>
+<span class="fc" id="L503">		Direction.values(); </span>
+<span class="fc" id="L504">		Direction.valueOf(&quot;UP&quot;);</span>
+<span class="fc" id="L505">		Requester.values();</span>
+<span class="fc" id="L506">		Requester.valueOf(&quot;FR&quot;);</span>
+<span class="fc" id="L507">		Request requestOne = new Request(Requester.FR, 7, Direction.UP, 110, 0);</span>
+<span class="fc" id="L508">		Request requestTwo = new Request(Requester.FR, 7, Direction.UP, 109, 0);</span>
+<span class="fc" id="L509">		assertEquals(false, requestOne.equals(requestTwo)); </span>
+<span class="fc" id="L510">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>ElevatorTest (2018-6-6 15:22:57)</div></body></html>

@@ -1,0 +1,36 @@
+#map.txt##
+
+#map
+
+#end_map
+
+
+#light
+light1.txt
+#end_light
+
+
+#flow
+(1,2) (2,2) 5
+(3,2) (2,2) 10
+(2,1) (2,2) 15
+(2,3) (2,2) 20
+#end_flow
+
+
+
+
+#request
+
+#end_request
+
+#taxi
+No.1 0 2 (1,1)
+No.2 0 2 (2,0)
+No.3 0 2 (3,3)
+No.4 0 2 (4,4)
+No.5 1 2 (5,5)
+No.6 1 2 (6,6)
+
+#end_taxi
+

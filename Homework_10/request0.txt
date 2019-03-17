@@ -1,0 +1,52 @@
+Time: 1526898437583  src: (20, 0)  dst(10, 0)
+1526898444360: Taxi ID: 2  Location: (20, 0)   State: ToCustomer Credit: 0 arrived at where the customer 0 is
+1526898444860: Taxi 6  Locate at: (6, 5)   State: Serving  got the customer
+1526898444860: Taxi 1  Locate at: (1, 2)   State: ToCustomer  on the way to get customer
+1526898444860: Taxi 3  Locate at: (4, 3)   State: ToCustomer  on the way to get customer
+1526898444860: Taxi 5  Locate at: (6, 5)   State: Serving  got the customer
+1526898444860: Taxi 4  Locate at: (5, 4)   State: ToCustomer  on the way to get customer
+1526898445360: Taxi ID: 2  Location: (20, 0)   State: Stopping Credit: 2 finally get the customer 0
+1526898445360: Taxi 1  Locate at: (2, 2)   State: ToCustomer  on the way to get customer
+1526898445360: Taxi 3  Locate at: (4, 4)   State: ToCustomer  on the way to get customer
+1526898445360: Taxi 2  Locate at: (20, 0)   State: Serving  got the customer
+4 stop for the light226
+5 stop for the light226
+6 stop for the light226
+1526898445586: Taxi 5  Locate at: (7, 5)   State: Serving  got the customer
+1526898445586: Taxi 6  Locate at: (7, 5)   State: Serving  got the customer
+1526898445586: Taxi 4  Locate at: (6, 4)   State: ToCustomer  on the way to get customer
+1526898445860: Taxi 3  Locate at: (5, 4)   State: ToCustomer  on the way to get customer
+1526898445860: Taxi 2  Locate at: (19, 0)   State: Serving  got the customer
+1526898446086: Taxi 5  Locate at: (7, 4)   State: Serving  got the customer
+1526898446086: Taxi 4  Locate at: (6, 3)   State: ToCustomer  on the way to get customer
+1526898446086: Taxi 6  Locate at: (7, 4)   State: Serving  got the customer
+1 stop for the light339
+1526898446199: Taxi 1  Locate at: (2, 3)   State: ToCustomer  on the way to get customer
+1526898446360: Taxi 2  Locate at: (18, 0)   State: Serving  got the customer
+1526898446586: Taxi 6  Locate at: (7, 3)   State: Serving  got the customer
+1526898446586: Taxi 5  Locate at: (7, 3)   State: Serving  got the customer
+1526898446699: Taxi 1  Locate at: (3, 3)   State: ToCustomer  on the way to get customer
+3 stop for the light452
+1526898446812: Taxi 3  Locate at: (6, 4)   State: ToCustomer  on the way to get customer
+4 stop for the light226
+1526898446812: Taxi 4  Locate at: (7, 3)   State: ToCustomer  on the way to get customer
+1526898446860: Taxi 2  Locate at: (17, 0)   State: Serving  got the customer
+1526898447199: Taxi 1  Locate at: (4, 3)   State: ToCustomer  on the way to get customer
+1526898447312: Taxi 3  Locate at: (6, 3)   State: ToCustomer  on the way to get customer
+1526898447312: Taxi 4  Locate at: (7, 2)   State: ToCustomer  on the way to get customer
+1526898447360: Taxi 2  Locate at: (16, 0)   State: Serving  got the customer
+6 stop for the light339
+5 stop for the light339
+1526898447425: Taxi 5  Locate at: (7, 2)   State: Serving  got the customer
+1526898447425: Taxi 6  Locate at: (7, 2)   State: Serving  got the customer
+1526898447699: Taxi 1  Locate at: (4, 4)   State: ToCustomer  on the way to get customer
+1526898447860: Taxi 2  Locate at: (15, 0)   State: Serving  got the customer
+6 stop for the light113
+5 stop for the light113
+1526898448038: Taxi 6  Locate at: (8, 2)   State: Serving  got the customer
+1526898448038: Taxi 5  Locate at: (8, 2)   State: Serving  got the customer
+3 stop for the light226
+4 stop for the light226
+1526898448038: Taxi 4  Locate at: (8, 2)   State: ToCustomer  on the way to get customer
+1526898448038: Taxi 3  Locate at: (7, 3)   State: ToCustomer  on the way to get customer
+1526898448199: Taxi 1  Locate at: (5, 4)   State: ToCustomer  on the way to get customer

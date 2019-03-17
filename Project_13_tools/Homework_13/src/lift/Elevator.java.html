@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Elevator.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">ElevatorTest (2018-6-6 15:22:57)</a> &gt; <a href="../../index.html" class="el_group">Homework_13</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">lift</a> &gt; <span class="el_source">Elevator.java</span></div><h1>Elevator.java</h1><pre class="source lang-java linenums">package lift;
+
+public class Elevator implements Equipment {
+	/**
+	 * @Overview: Elevator class is a model of elevator, it deal with the requests
+	 *            and store request which is not to be exert right away. It records
+	 *            relative information and provide method to check information.
+	 */
+	private int floorNow;
+	private double clock;
+	private Request lastRq;
+	private int last;
+	private Request lastRq2;
+	private int last2;
+	private int diff;
+
+	/**
+	 * @REQUIRES: None;
+	 * @MODIFIES: this;
+	 * @EFFECTS: construct(this);
+	 */
+<span class="fc" id="L22">	public Elevator() {</span>
+<span class="fc" id="L23">		floorNow = 1;</span>
+<span class="fc" id="L24">		clock = 0.0;</span>
+<span class="fc" id="L25">		last = 0;</span>
+<span class="fc" id="L26">		lastRq = null;</span>
+<span class="fc" id="L27">		last2 = 0;</span>
+<span class="fc" id="L28">		lastRq2 = null;</span>
+<span class="fc" id="L29">	}</span>
+
+	public double getClock() {
+<span class="fc" id="L32">		return clock;</span>
+	}
+
+	public int getFloor() {
+<span class="fc" id="L36">		return floorNow;</span>
+	}
+
+	/**
+	 * @REQUIRES: mainRq!=null; rq!=null;
+	 * @MODIFIES: None;
+	 * @EFFECTS: \result == (According to the clock and floor of elevator and the
+	 *           different of floor between two request, predict a time between two
+	 *           request);
+	 */
+	public double predictTime(Request mainRq, Request rq) {
+<span class="fc" id="L47">		double temClock = 0;</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">		if ((double) mainRq.getTime() &gt; clock) {</span>
+<span class="fc" id="L49">			temClock = (double) mainRq.getTime();</span>
+<span class="fc" id="L50">		} else {</span>
+<span class="fc" id="L51">			temClock = clock;</span>
+		}
+<span class="fc" id="L53">		temClock = temClock + (Math.abs(floorNow - rq.getFloor())) * 0.5;</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">		if (last != 0) {</span>
+<span class="fc bfc" id="L55" title="All 4 branches covered.">			if (rq.getFloor() != floorNow &amp;&amp; lastRq.getFloor() != rq.getFloor()) {</span>
+<span class="fc" id="L56">				temClock++;</span>
+			}
+		}
+<span class="fc" id="L59">		return temClock;</span>
+	}
+
+	/**
+	 * @REQUIRES: rq!=null;
+	 * @MODIFIES: clock;
+	 * @EFFECTS: ((double) rq.getTime() &gt; clock &amp;&amp; rq.getMt() == 1) ==&gt; (clock ==
+	 *           (double) rq.getTime()); ((double) rq.getTime() &gt; clock &amp;&amp;
+	 *           rq.getMt() == 0 &amp;&amp; (double) rq.getFt() &gt; clock) ==&gt; (clock ==
+	 *           (double) rq.getFt());
+	 */
+	private void resetClock(Request rq) {
+<span class="fc bfc" id="L71" title="All 2 branches covered.">		if ((double) rq.getTime() &gt; clock) {</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">			if (rq.getMt() == 1) { // mainRq</span>
+<span class="fc" id="L73">				clock = (double) rq.getTime();</span>
+<span class="fc" id="L74">			} else { // byRq</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">				if ((double) rq.getFt() &gt; clock)</span>
+<span class="fc" id="L76">					clock = (double) rq.getFt();</span>
+			}
+		}
+<span class="fc" id="L79">	}</span>
+
+	/**
+	 * @REQUIRES: rq!=null;
+	 * @MODIFIES: this;
+	 * @EFFECTS: (According whether rq is a main request(whether rq.getMt() == 1)
+	 *           and whether the elevator has store one or two request, act the
+	 *           request or store it in lastRq or lastRq2 and change relative label
+	 *           last and last2)
+	 */
+	public void move(Request rq) {
+<span class="fc" id="L90">		resetClock(rq);</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">		if (rq.getMt() == 0) {</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">			if (last == 0) {</span>
+<span class="fc" id="L93">				lastRq = rq;</span>
+<span class="fc" id="L94">				last = 1;</span>
+<span class="fc" id="L95">			} else { // rq.getMt() == 0 &amp;&amp; last == 1</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">				if (lastRq.getFloor() == rq.getFloor()) {</span>
+					// if (lastRq.getOrder() &lt; rq.getOrder()) {
+<span class="fc" id="L98">					last2 = 1;</span>
+<span class="fc" id="L99">					lastRq2 = rq;</span>
+					// } else {
+					// last2 = 1;
+					// lastRq2 = lastRq;
+					// lastRq = rq;
+					// }
+<span class="fc" id="L105">				} else {</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">					if (last2 == 1) {</span>
+<span class="fc" id="L107">						act(lastRq);</span>
+<span class="fc" id="L108">						System.out.println(toString(lastRq));</span>
+<span class="fc" id="L109">						System.out.println(toString(lastRq2));</span>
+<span class="fc" id="L110">						last2 = 0;</span>
+<span class="fc" id="L111">						lastRq = rq;</span>
+<span class="fc" id="L112">						last = 1;</span>
+<span class="fc" id="L113">					} else {</span>
+<span class="fc" id="L114">						act(lastRq);</span>
+<span class="fc" id="L115">						System.out.println(toString(lastRq));</span>
+<span class="fc" id="L116">						lastRq = rq;</span>
+<span class="fc" id="L117">						last = 1;</span>
+					}
+<span class="fc" id="L119">					clock++;</span>
+				}
+			}
+
+<span class="fc bfc" id="L123" title="All 2 branches covered.">		} else if (last == 0) { // rq.getMt() == 1 </span>
+<span class="fc" id="L124">			act(rq);</span>
+<span class="fc" id="L125">			System.out.println(toString(rq));</span>
+<span class="fc" id="L126">			clock++;</span>
+<span class="fc" id="L127">		} else { // if(rq.getMt()==1 &amp;&amp; last==1) </span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">			if (last2 == 1) {</span>
+<span class="fc" id="L129">				act(lastRq);</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">				if (lastRq.getFloor() == rq.getFloor()) {</span>
+<span class="fc" id="L131">					System.out.println(toString(rq));</span>
+<span class="fc" id="L132">					System.out.println(toString(lastRq));</span>
+<span class="fc" id="L133">					System.out.println(toString(lastRq2));</span>
+					// }
+<span class="fc" id="L135">				} else {</span>
+<span class="fc" id="L136">					System.out.println(toString(lastRq));</span>
+<span class="fc" id="L137">					System.out.println(toString(lastRq2));</span>
+<span class="fc" id="L138">					clock++;</span>
+<span class="fc" id="L139">					act(rq);</span>
+<span class="fc" id="L140">					System.out.println(toString(rq));</span>
+				}
+<span class="fc" id="L142">			} else {</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">				if (lastRq.getFloor() == rq.getFloor()) {</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">					if (lastRq.getOrder() &gt; rq.getOrder()) {</span>
+<span class="fc" id="L145">						act(rq);</span>
+<span class="fc" id="L146">						System.out.println(toString(rq));</span>
+<span class="fc" id="L147">						System.out.println(toString(lastRq));</span>
+<span class="fc" id="L148">					} else {</span>
+<span class="fc" id="L149">						act(lastRq);</span>
+<span class="fc" id="L150">						System.out.println(toString(lastRq));</span>
+<span class="fc" id="L151">						System.out.println(toString(rq));</span>
+					}
+<span class="fc" id="L153">				} else {</span>
+<span class="fc" id="L154">					act(lastRq);</span>
+<span class="fc" id="L155">					System.out.println(toString(lastRq));</span>
+<span class="fc" id="L156">					clock++;</span>
+<span class="fc" id="L157">					act(rq);</span>
+<span class="fc" id="L158">					System.out.println(toString(rq));</span>
+				}
+			}
+<span class="fc" id="L161">			clock++;</span>
+<span class="fc" id="L162">			last = 0;</span>
+<span class="fc" id="L163">			last2 = 0;</span>
+		}
+<span class="fc" id="L165">	}</span>
+
+	/**
+	 * @REQUIRES: rq != null;
+	 * @MODIFIES: diff; floorNow; clock;
+	 * @EFFECTS: diff == \old(floorNow) - rq.getFloor(); floorNow == rq.getFloor();
+	 *           clock == 0.5 * Math.abs(\old(floorNow) - rq.getFloor()) +
+	 *           \old(clock);
+	 */
+	private void act(Request rq) {
+<span class="fc" id="L175">		int askfloor = rq.getFloor();</span>
+<span class="fc" id="L176">		diff = floorNow - askfloor;</span>
+<span class="fc" id="L177">		floorNow = askfloor;</span>
+<span class="fc" id="L178">		clock = 0.5 * Math.abs(diff) + clock;</span>
+<span class="fc" id="L179">	}</span>
+
+	/**
+	 * @REQUIRES: rq != null;
+	 * @MODIFIES: None;
+	 * @EFFECTS: diff == 0 ==&gt; \result == &quot;[&quot; + rq.toString() + &quot;]/&quot; + &quot;(&quot; +
+	 *           floorNow + String.format(&quot;,STILL,%.1f)&quot;, clock + 1); diff &gt; 0 ==&gt;
+	 *           \result == &quot;[&quot; + rq.toString() + &quot;]/&quot; + &quot;(&quot; + floorNow +
+	 *           String.format(&quot;,DOWN,%.1f)&quot;, clock); diff &lt; 0 ==&gt; \result == &quot;[&quot; +
+	 *           rq.toString() + &quot;]/&quot; + &quot;(&quot; + floorNow + String.format(&quot;,UP,%.1f)&quot;,
+	 *           clock);
+	 */
+	private String toString(Request rq) {
+<span class="fc" id="L192">		String rqori = rq.toString();</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">		if (diff == 0) {</span>
+<span class="fc" id="L194">			return &quot;[&quot; + rqori + &quot;]/&quot; + &quot;(&quot; + floorNow + String.format(&quot;,STILL,%.1f)&quot;, clock + 1);</span>
+<span class="fc bfc" id="L195" title="All 2 branches covered.">		} else if (diff &gt; 0) {</span>
+<span class="fc" id="L196">			return &quot;[&quot; + rqori + &quot;]/&quot; + &quot;(&quot; + floorNow + String.format(&quot;,DOWN,%.1f)&quot;, clock);</span>
+		} else {
+<span class="fc" id="L198">			return &quot;[&quot; + rqori + &quot;]/&quot; + &quot;(&quot; + floorNow + String.format(&quot;,UP,%.1f)&quot;, clock);</span>
+		}
+	}
+
+	/**
+	 * @REQUIRES:None;
+	 * @MODIFIES:None;
+	 * @EFFECTS:(all the conditions satisfied) ==&gt; \result == true;
+	 */
+	public boolean repOK() {
+<span class="fc" id="L208">		return true;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>ElevatorTest (2018-6-6 15:22:57)</div></body></html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>SubScheduler.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">ElevatorTest (2018-6-6 15:22:57)</a> &gt; <a href="../../index.html" class="el_group">Homework_13</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">lift</a> &gt; <span class="el_source">SubScheduler.java</span></div><h1>SubScheduler.java</h1><pre class="source lang-java linenums">package lift;
+
+public class SubScheduler {
+	/**
+	 * @Overview: SubSchduler is a scheduler which get request and send to elevator.
+	 *            And it provides methods to use.
+	 */
+	private Request lastRq;
+
+	/**
+	 * @REQUIRES: None;
+	 * @MODIFIES: this;
+	 * @EFFECTS: construct(this);
+	 */
+<span class="fc" id="L15">	public SubScheduler() {</span>
+<span class="fc" id="L16">		lastRq = null;</span>
+<span class="fc" id="L17">	}</span>
+
+	/**
+	 * @REQUIRES: queue != null; elevator ！= null;
+	 * @MODIFIES: None;
+	 * @EFFECTS: (drive the elevator, get a request for it and wash the queue)
+	 */
+	public void command(Queue queue, Elevator elevator) {
+<span class="fc" id="L25">		Request rq = schedule(queue, elevator);</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">		if (rq != null) {</span>
+<span class="fc" id="L27">			elevator.move(rq);</span>
+<span class="fc" id="L28">			lastRq = rq; </span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">			if (lastRq.getMt() == 0) {</span>
+<span class="fc" id="L30">				queue.wash(lastRq, elevator.predictTime(queue.getMain(), lastRq) + 1);</span>
+<span class="fc" id="L31">			} else {</span>
+<span class="fc" id="L32">				queue.wash(lastRq, elevator.predictTime(queue.getMain(), lastRq));</span>
+			}
+		}
+<span class="fc" id="L35">	}</span>
+
+	/**
+	 * @REQUIRES: queue != null; elevator ！= null;
+	 * @MODIFIES: System.out;
+	 * @EFFECTS: (schedule the queue when queue not empty, print the information of
+	 *           homogeneous request and get a proper Request as rq) ==&gt; \request ==
+	 *           rq;
+	 */
+	public Request schedule(Queue queue, Elevator elevator) {
+<span class="fc bfc" id="L45" title="All 2 branches covered.">		if (!queue.end()) {</span>
+<span class="fc" id="L46">			queue.wash(lastRq, elevator.getClock());</span>
+		}
+<span class="fc bfc" id="L48" title="All 2 branches covered.">		while (!queue.end()) {</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">			if (queue.getFrontVal() == 0) {</span>
+<span class="fc" id="L50">				System.out.println(&quot;#SAME&quot; + &quot;[&quot; + queue.frontRq(lastRq, elevator).toString() + &quot;]&quot;);</span>
+<span class="fc" id="L51">				queue.moveFront(1);</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">			} else if (queue.getFrontVal() == 2) {</span>
+<span class="fc" id="L53">				queue.moveFront(1);</span>
+			} else {
+				break;
+			}
+		}
+<span class="fc" id="L58">		Request rq = queue.frontRq(lastRq, elevator);</span>
+<span class="fc" id="L59">		lastRq = rq;</span>
+<span class="fc" id="L60">		return rq;</span>
+	}
+
+	/**
+	 * @REQUIRES:None;
+	 * @MODIFIES:None;
+	 * @EFFECTS:(all the conditions satisfied) ==&gt; \result == true;
+	 */
+	public boolean repOK() {
+<span class="fc" id="L69">		return true;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>ElevatorTest (2018-6-6 15:22:57)</div></body></html>

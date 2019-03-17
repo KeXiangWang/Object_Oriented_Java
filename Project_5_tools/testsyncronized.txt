@@ -1,0 +1,50 @@
+	public void run(){
+		while(true) {
+			if(requestQueue.isEmpty()) {
+				synchronized (this) {
+					try {
+//						Thread.sleep(2000);
+						System.out.println("scheduler start");
+						this.wait();
+						System.out.println("requestQueue not empty");
+					}catch(InterruptedException ex) {
+						System.out.println("requestQueue.isEmpty()");
+					}
+				}
+
+			}else{
+				try {
+					Thread.sleep(2000);
+					System.out.println("requestQueue.isEmpty():false");
+				}catch(InterruptedException ex) {
+					System.out.println("requestQueue.");
+				}
+			}
+		}		
+//		Request request = requestQueue.poll();
+//		System.out.println(request.toString());
+	}
+
+
+	public void run() {
+		while (true) {
+			synchronized (this) {
+				try {
+					// Thread.sleep(2000);
+					this.wait();
+//					if (!dispatched) {
+						dispatchRequest();
+						dispatched = true;
+						
+//					} else {
+
+//					}
+				} catch (InterruptedException ex) {
+					System.out.println("schduler syncronized exception");
+				}
+			}
+		}
+		// Request request = requestQueue.poll();
+		// System.out.println(request.toString());
+	}
+	

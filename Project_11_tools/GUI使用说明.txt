@@ -1,0 +1,17 @@
+关于GUI程序包的使用说明
+
+1) GUI提供了一个TaxiGUI类，有关地图，出租车以及请求可以通过可视化方式进行展示
+
+2) 在使用之前需要对可视化对象进行地图初始化，使用boolean LoadMap(int[][] map, int size)将地图载入可视化对象，要求输入为一个2维数组，大小为size（本次作业应该是80），地图坐标左上角为坐标原点(0,0),该地图是否有效由调用者负责。
+
+3) 在使用之前需要将出租车进行初始化，每一个出租车需要通过调用void SetTaxiStatus(int index, Point point, int status)来改变出租车的状态，index取值范围[0,99]，Point为出租车坐标值，status取值为0,1,2，其中0- 停止运行；1-服务（在运行且车内有乘客）；2-等待服务（在运行但车内无乘客），3-准备服务。
+
+4) 在出租车运行过程中，每一次出租车移动一步后仍然需要调用void SetTaxiStatus(int index, Point point, int status)来改变出租车的状态。
+
+5) 系统收到出租车请求，也需要将该请求输入可视化对象，通过调用void RequestTaxi(Point src, Point dst)来输入，src，dst分别为乘客提出出租车请求的起始坐标和目的坐标。
+
+6) 在断开/联通邻近的两条道路时，调用void SetRoadStatus(Point p1, Point p2, int status)来进行设置，其中status=0:断开，1：联通。由开发者保证该函数调用的逻辑正确性（如两个点应为邻接点，不能是同一个点等等）。
+
+7) 针对路口红绿灯，调用void SetLightStatus(Point p, int Status)来进行设置，其中Status取值：0 没有红绿灯 1 东西方向为绿灯（南北向红灯） 2 东西方向为红灯（南北向绿灯）。 
+
+8) 对每一个出租车，调用void SetTaxiType(int index, int type)来进行类型设置，index为出租车编号，type为出租车类型，0是普通出租车，1为可追踪出租车(在GUI上该类型出租车显示为粉色)。

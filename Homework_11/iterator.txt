@@ -1,0 +1,78 @@
+1527065405979: Taxi 5  Locate at: (6, 5)   State: ToCustomer  on the way to get customer
+1527065407037: Taxi 5  Locate at: (7, 5)   State: ToCustomer  on the way to get customer
+1527065407816: Taxi 5  Locate at: (7, 6)   State: ToCustomer  on the way to get customer
+1527065408316: Taxi 5  Locate at: (8, 6)   State: ToCustomer  on the way to get customer
+1527065408816: Taxi 5  Locate at: (8, 5)   State: ToCustomer  on the way to get customer
+1527065409316: Taxi 5  Locate at: (9, 5)   State: ToCustomer  on the way to get customer
+1527065410153: Taxi 5  Locate at: (10, 5)   State: ToCustomer  on the way to get customer
+1527065410653: Taxi 5  Locate at: (10, 4)   State: ToCustomer  on the way to get customer
+1527065411153: Taxi 5  Locate at: (10, 3)   State: ToCustomer  on the way to get customer
+1527065411711: Taxi 5  Locate at: (11, 3)   State: ToCustomer  on the way to get customer
+1527065412211: Taxi 5  Locate at: (12, 3)   State: ToCustomer  on the way to get customer
+1527065413269: Taxi 5  Locate at: (13, 3)   State: ToCustomer  on the way to get customer
+1527065413769: Taxi 5  Locate at: (13, 2)   State: ToCustomer  on the way to get customer
+1527065414827: Taxi 5  Locate at: (14, 2)   State: ToCustomer  on the way to get customer
+1527065415327: Taxi 5  Locate at: (14, 1)   State: ToCustomer  on the way to get customer
+1527065416385: Taxi 5  Locate at: (15, 1)   State: ToCustomer  on the way to get customer
+1527065416885: Taxi 5  Locate at: (15, 0)   State: ToCustomer  on the way to get customer
+1527065417943: Taxi 5  Locate at: (16, 0)   State: ToCustomer  on the way to get customer
+1527065418443: Taxi 5  Locate at: (17, 0)   State: ToCustomer  on the way to get customer
+1527065419501: Taxi 5  Locate at: (18, 0)   State: ToCustomer  on the way to get customer
+1527065420001: Taxi 5  Locate at: (19, 0)   State: ToCustomer  on the way to get customer
+1527065420501: Taxi ID: 5  Location: (20, 0)   State: ToCustomer Credit: 2 arrived at where the customer 0 is
+1527065421501: Taxi ID: 5  Location: (20, 0)   State: Stopping Credit: 2 finally get the customer 0
+1527065421501: Taxi 5  Locate at: (20, 0)   State: Serving  got the customer
+1527065422001: Taxi 5  Locate at: (19, 0)   State: Serving  got the customer
+1527065422501: Taxi 5  Locate at: (18, 0)   State: Serving  got the customer
+1527065423001: Taxi 5  Locate at: (17, 0)   State: Serving  got the customer
+1527065424175: Taxi 5  Locate at: (16, 0)   State: Serving  got the customer
+1527065424675: Taxi 5  Locate at: (15, 0)   State: Serving  got the customer
+1527065425733: Taxi 5  Locate at: (14, 0)   State: Serving  got the customer
+1527065426233: Taxi 5  Locate at: (13, 0)   State: Serving  got the customer
+1527065426733: Taxi 5  Locate at: (13, 1)   State: Serving  got the customer
+1527065427233: Taxi 5  Locate at: (13, 2)   State: Serving  got the customer
+1527065427733: Taxi 5  Locate at: (12, 2)   State: Serving  got the customer
+1527065428849: Taxi 5  Locate at: (11, 2)   State: Serving  got the customer
+1527065429628: Taxi 5  Locate at: (11, 1)   State: Serving  got the customer
+1527065430128: Taxi 5  Locate at: (11, 0)   State: Serving  got the customer
+Arrived!!!  Taxi 5  Locate at: (10, 0)   State: Stopping  At 1527065430628 The taxi picked customer 0
+---------------------------------------------------------------------------------------
+1527065405979: Taxi 5  Locate at: (6, 5)   State: ToCustomer  on the way to get customer
+1527065407037: Taxi 5  Locate at: (7, 5)   State: ToCustomer  on the way to get customer
+1527065407816: Taxi 5  Locate at: (7, 6)   State: ToCustomer  on the way to get customer
+1527065408316: Taxi 5  Locate at: (8, 6)   State: ToCustomer  on the way to get customer
+1527065408816: Taxi 5  Locate at: (8, 5)   State: ToCustomer  on the way to get customer
+1527065409316: Taxi 5  Locate at: (9, 5)   State: ToCustomer  on the way to get customer
+1527065410153: Taxi 5  Locate at: (10, 5)   State: ToCustomer  on the way to get customer
+1527065410653: Taxi 5  Locate at: (10, 4)   State: ToCustomer  on the way to get customer
+1527065411153: Taxi 5  Locate at: (10, 3)   State: ToCustomer  on the way to get customer
+1527065411711: Taxi 5  Locate at: (11, 3)   State: ToCustomer  on the way to get customer
+1527065412211: Taxi 5  Locate at: (12, 3)   State: ToCustomer  on the way to get customer
+1527065413269: Taxi 5  Locate at: (13, 3)   State: ToCustomer  on the way to get customer
+1527065413769: Taxi 5  Locate at: (13, 2)   State: ToCustomer  on the way to get customer
+1527065414827: Taxi 5  Locate at: (14, 2)   State: ToCustomer  on the way to get customer
+1527065415327: Taxi 5  Locate at: (14, 1)   State: ToCustomer  on the way to get customer
+1527065416385: Taxi 5  Locate at: (15, 1)   State: ToCustomer  on the way to get customer
+1527065416885: Taxi 5  Locate at: (15, 0)   State: ToCustomer  on the way to get customer
+1527065417943: Taxi 5  Locate at: (16, 0)   State: ToCustomer  on the way to get customer
+1527065418443: Taxi 5  Locate at: (17, 0)   State: ToCustomer  on the way to get customer
+1527065419501: Taxi 5  Locate at: (18, 0)   State: ToCustomer  on the way to get customer
+1527065420001: Taxi 5  Locate at: (19, 0)   State: ToCustomer  on the way to get customer
+1527065420501: Taxi ID: 5  Location: (20, 0)   State: ToCustomer Credit: 2 arrived at where the customer 0 is
+1527065421501: Taxi ID: 5  Location: (20, 0)   State: Stopping Credit: 2 finally get the customer 0
+1527065421501: Taxi 5  Locate at: (20, 0)   State: Serving  got the customer
+1527065422001: Taxi 5  Locate at: (19, 0)   State: Serving  got the customer
+1527065422501: Taxi 5  Locate at: (18, 0)   State: Serving  got the customer
+1527065423001: Taxi 5  Locate at: (17, 0)   State: Serving  got the customer
+1527065424175: Taxi 5  Locate at: (16, 0)   State: Serving  got the customer
+1527065424675: Taxi 5  Locate at: (15, 0)   State: Serving  got the customer
+1527065425733: Taxi 5  Locate at: (14, 0)   State: Serving  got the customer
+1527065426233: Taxi 5  Locate at: (13, 0)   State: Serving  got the customer
+1527065426733: Taxi 5  Locate at: (13, 1)   State: Serving  got the customer
+1527065427233: Taxi 5  Locate at: (13, 2)   State: Serving  got the customer
+1527065427733: Taxi 5  Locate at: (12, 2)   State: Serving  got the customer
+1527065428849: Taxi 5  Locate at: (11, 2)   State: Serving  got the customer
+1527065429628: Taxi 5  Locate at: (11, 1)   State: Serving  got the customer
+1527065430128: Taxi 5  Locate at: (11, 0)   State: Serving  got the customer
+Arrived!!!  Taxi 5  Locate at: (10, 0)   State: Stopping  At 1527065430628 The taxi picked customer 0
+---------------------------------------------------------------------------------------

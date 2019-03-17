@@ -1,0 +1,92 @@
+IF D:\test\a.txt renamed THEN record-summary
+IF D:\test\a.txt renamed THEN recover
+IF D:\test renamed THEN record-summary
+IF D:\test renamed THEN record-detail
+IF D:\test modified THEN record-summary
+IF D:\test renamed THEN recover
+IF D:\test renamed THEN record-summary
+IF D:\test modified THEN record-summary
+IF D:\test size-changed THEN record-summary
+IF D:\test path-changed THEN record-summary
+END
+
+
+IF D:\test renamed THEN record-summary
+IF D:\test modified THEN record-summary
+IF D:\test size-changed THEN record-summary
+IF D:\test path-changed THEN record-summary
+END
+
+IF D:\test renamed THEN record-detail
+IF D:\test modified THEN record-detail
+IF D:\test size-changed THEN record-detail
+IF D:\test path-changed THEN record-detail
+END
+
+IF D:\test\outDir0\testFilea renamed THEN record-detail
+IF D:\test\outDir0\testFilea modified THEN record-detail
+IF D:\test\outDir0\testFilea size-changed THEN record-detail
+IF D:\test\outDir0\testFilea path-changed THEN record-detail
+IF D:\test\outDir0\testFilec renamed THEN record-detail
+IF D:\test\outDir0\testFilec modified THEN record-detail
+IF D:\test\outDir0\testFilec size-changed THEN record-detail
+IF D:\test\outDir0\testFilec path-changed THEN record-detail
+IF D:\test\outDir0\testFileb renamed THEN recover
+IF D:\test\outDir0\testFileb path-changed THEN recover
+IF D:\test\outDir0\testFiled renamed THEN record-detail
+IF D:\test\outDir0\testFiled modified THEN record-detail
+IF D:\test\outDir0\testFiled size-changed THEN record-detail
+IF D:\test\outDir0\testFiled path-changed THEN record-detail
+END
+
+IF D:\test renamed THEN record-detail
+IF D:\test\outDir0\testFilea renamed THEN record-detail
+IF D:\test\outDir0\testFileb renamed THEN recover
+END
+
+
+
+IF D:\test renamed THEN record-detail
+IF D:\test modified THEN record-detail
+IF D:\test size-changed THEN record-detail
+IF D:\test path-changed THEN record-detail
+IF D:\test\outDir0\testFilea renamed THEN record-detail
+IF D:\test\outDir0\testFilea modified THEN record-detail
+IF D:\test\outDir0\testFilea size-changed THEN record-detail
+IF D:\test\outDir0\testFilea path-changed THEN record-detail
+IF D:\test\outDir0\testFilec renamed THEN record-detail
+IF D:\test\outDir0\testFilec modified THEN record-detail
+IF D:\test\outDir0\testFilec size-changed THEN record-detail
+IF D:\test\outDir0\testFilec path-changed THEN record-detail
+IF D:\test\outDir0\testFileb renamed THEN recover
+IF D:\test\outDir0\testFileb path-changed THEN recover
+IF D:\test\outDir0\testFiled renamed THEN record-detail
+IF D:\test\outDir0\testFiled modified THEN record-detail
+IF D:\test\outDir0\testFiled size-changed THEN record-detail
+IF D:\test\outDir0\testFiled path-changed THEN record-detail
+END
+
+IF D:\test renamed THEN record-detail
+IF D:\test modified THEN record-detail
+IF D:\test size-changed THEN record-detail
+IF D:\test path-changed THEN record-detail
+IF D:\test\outDir0\testFileb renamed THEN recover
+END
+IF D:\test modified THEN recover
+IF D:\test size-changed THEN recover
+END
+IF D:\test renamed THEN record-detail
+IF D:\test\outDir0 renamed THEN record-detail
+IF D:\test\outDir1 renamed THEN record-detail
+IF D:\test\outDir2 renamed THEN record-detail
+IF D:\test\outDir2 renamed THEN record-summary
+IF D:\test\outDir2 renamed THEN recover
+IF D:\test\outDir0\testFilea renamed THEN record-detail
+IF D:\test\outDir0\testFileb renamed THEN record-detail
+IF D:\test\outDir0\testFilec renamed THEN record-detail
+IF D:\test\outDir0\testFiled renamed THEN record-detail
+IF D:\test\outDir0\secondDir0 renamed THEN record-detail
+IF D:\test\outDir0\secondDir1 renamed THEN record-detail
+IF D:\test\outDir0\secondDir0\testFile10 renamed THEN record-detail
+IF D:\test\outDir0\secondDir0\testFile11 renamed THEN record-detail
+END

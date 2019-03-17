@@ -1,0 +1,2 @@
+Time: 1525857811242  src: (0, 22)  dst(58, 13)
+Failed to dispatch a taxi for Customer 1 at 1525857818742

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Request.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">ElevatorTest (2018-6-6 15:22:57)</a> &gt; <a href="../../index.html" class="el_group">Homework_13</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">lift</a> &gt; <span class="el_source">Request.java</span></div><h1>Request.java</h1><pre class="source lang-java linenums">package lift;
+
+public class Request {
+	/**
+	 * @Overview: Request record all the information of a request. And it provides
+	 *            methods to check information.
+	 */
+
+	private Requester guest;
+	private int askfloor;
+	private int target;
+	private Direction direction;
+	private long time;
+	private long ftime;
+	private int motion;
+	private int order;
+
+	/**
+	 * @REQUIRES: a!=null; c!=null;
+	 * @MODIFIES: this;
+	 * @EFFECTS: construct(this);
+	 */
+<span class="fc" id="L23">	public Request(Requester a, int b, Direction c, long d, int e) {</span>
+<span class="fc" id="L24">		guest = a;</span>
+<span class="fc" id="L25">		askfloor = b;</span>
+<span class="fc" id="L26">		direction = c;</span>
+<span class="fc" id="L27">		time = d;</span>
+<span class="fc" id="L28">		ftime = 0;</span>
+<span class="fc" id="L29">		motion = 1;</span>
+<span class="fc" id="L30">		order = e;</span>
+<span class="fc" id="L31">	}</span>
+
+	/**
+	 * @REQUIRES: a!=null;
+	 * @MODIFIES: this;
+	 * @EFFECTS: construct(this);
+	 */
+<span class="fc" id="L38">	public Request(Requester a, int b, long d, int e) {</span>
+<span class="fc" id="L39">		guest = a;</span>
+<span class="fc" id="L40">		target = b;</span>
+<span class="fc" id="L41">		time = d;</span>
+<span class="fc" id="L42">		ftime = 0;</span>
+<span class="fc" id="L43">		motion = 1;</span>
+<span class="fc" id="L44">		order = e;</span>
+<span class="fc" id="L45">	}</span>
+
+	public Requester getGt() {
+<span class="fc" id="L48">		return guest;</span>
+	}
+
+	public int getTg() {
+<span class="fc" id="L52">		return target;</span>
+	}
+
+	public int getAf() {
+<span class="fc" id="L56">		return askfloor;</span>
+	}
+
+	public Direction getDr() {
+<span class="fc" id="L60">		return direction;</span>
+	}
+
+	public long getTime() {
+<span class="fc" id="L64">		return time;</span>
+	}
+
+	public int getMt() {
+<span class="fc" id="L68">		return motion;</span>
+	}
+
+	public void setMt(int n) {
+<span class="fc" id="L72">		motion = n;</span>
+<span class="fc" id="L73">	}</span>
+
+	public long getFt() {
+<span class="fc" id="L76">		return ftime;</span>
+	}
+
+	public void setFt(long n) {
+<span class="fc" id="L80">		ftime = n;</span>
+<span class="fc" id="L81">	}</span>
+
+	/**
+	 * @REQUIRES: a!=null;
+	 * @MODIFIES: this;
+	 * @EFFECTS: construct(this);
+	 */
+	public int getFloor() {
+<span class="fc bfc" id="L89" title="All 2 branches covered.">		if (guest == Requester.FR)</span>
+<span class="fc" id="L90">			return askfloor;</span>
+		else
+<span class="fc" id="L92">			return target;</span>
+	}
+
+	public int getOrder() {
+<span class="fc" id="L96">		return order;</span>
+	} 
+
+	/**
+	 * @REQUIRES: None;
+	 * @MODIFIES: None;
+	 * @EFFECTS: (o instanceof Request)&amp;&amp;(guest == rq.getGt() &amp;&amp; ((guest ==
+	 *           Requester.FR &amp;&amp; askfloor == rq.getAf() &amp;&amp; direction == rq.getDr()
+	 *           &amp;&amp; rq.getTime() &gt;= time) || (guest == Requester.FR &amp;&amp; target ==
+	 *           rq.getTg() &amp;&amp; rq.getTime() &gt;= time))) ==&gt; \result == true; (other
+	 *           conditions) ==&gt; \result == false;
+	 */
+	@Override
+	public boolean equals(Object o) {
+<span class="fc bfc" id="L110" title="All 2 branches covered.">		if (o == this)</span>
+<span class="fc" id="L111">			return true; </span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">		if (!(o instanceof Request)) {</span>
+<span class="fc" id="L113">			return false;</span>
+		}
+
+<span class="fc" id="L116">		Request rq = (Request) o;</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">		if (guest == rq.getGt()) {</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">			if (guest == Requester.FR) { </span>
+<span class="fc bfc" id="L119" title="All 6 branches covered.">				if (askfloor == rq.getAf() &amp;&amp; direction == rq.getDr() &amp;&amp; rq.getTime() &gt;= time) {</span>
+<span class="fc" id="L120">					return true; </span>
+				}
+			} else {
+<span class="fc bfc" id="L123" title="All 4 branches covered.">				if (target == rq.getTg() &amp;&amp; rq.getTime() &gt;= time) {</span>
+<span class="fc" id="L124">					return true;</span>
+				}
+			}
+		}
+<span class="fc" id="L128">		return false;</span>
+	}
+	/**
+	 * @REQUIRES: None;
+	 * @MODIFIES: None;
+	 * @EFFECTS: (o instanceof Request)&amp;&amp;(guest == rq.getGt() &amp;&amp; ((guest ==
+	 *           Requester.FR &amp;&amp; askfloor == rq.getAf() &amp;&amp; direction == rq.getDr()
+	 *           &amp;&amp; rq.getTime() &gt;= time) || (guest == Requester.FR &amp;&amp; target ==
+	 *           rq.getTg() &amp;&amp; rq.getTime() &gt;= time))) ==&gt; \result == true; (other
+	 *           conditions) ==&gt; \result == false;
+	 */
+	@Override
+	public String toString() {
+		String string;
+<span class="fc" id="L142">		String stime = String.format(&quot;%d&quot;, time);</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">		if (guest == Requester.FR) {</span>
+<span class="fc" id="L144">			string = guest + &quot;,&quot; + askfloor + &quot;,&quot; + direction + &quot;,&quot; + stime;</span>
+<span class="fc" id="L145">			return string;</span>
+		} else {
+<span class="fc" id="L147">			string = guest + &quot;,&quot; + target + &quot;,&quot; + stime;</span>
+<span class="fc" id="L148">			return string;</span>
+		}
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>ElevatorTest (2018-6-6 15:22:57)</div></body></html>

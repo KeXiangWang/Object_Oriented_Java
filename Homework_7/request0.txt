@@ -1,0 +1,139 @@
+Time: 1524849145912  src: (16, 56)  dst(59, 1)
+11524849145946
+21524849146145
+31524849146345
+41524849146541
+51524849146741
+61524849146942
+71524849147141
+81524849147341
+91524849147542
+101524849147742
+111524849147941
+121524849148142
+131524849148341
+141524849148543
+151524849148741
+Taxi ID: 37  Location: (13, 54)   State: Waiting Credit: 1 	tried to get the customer
+Taxi ID: 89  Location: (15, 51)   State: Waiting Credit: 1 	tried to get the customer
+Taxi ID: 96  Location: (13, 58)   State: Waiting Credit: 1 	tried to get the customer
+At the time of 1524849148912  Time: 1524849145912  src: (16, 56)  dst(59, 1) has been dispatched to Taxi ID: 37  Location: (13, 54)   State: Waiting Credit: 1
+1524849148940: Taxi 37  Locate at: (14, 54)   State: ToCustomer  on the way to get customer
+1524849149140: Taxi 37  Locate at: (15, 54)   State: ToCustomer  on the way to get customer
+1524849149340: Taxi 37  Locate at: (16, 54)   State: ToCustomer  on the way to get customer
+1524849149540: Taxi 37  Locate at: (16, 55)   State: ToCustomer  on the way to get customer
+1524849149740: Taxi 37  Locate at: (15, 55)   State: ToCustomer  on the way to get customer
+1524849149940: Taxi 37  Locate at: (15, 56)   State: ToCustomer  on the way to get customer
+1524849150140: Taxi ID: 37  Location: (16, 56)   State: ToCustomer Credit: 1 arrived at where the customer 0 is
+1524849151140: Taxi ID: 37  Location: (16, 56)   State: Stopping Credit: 1 finally get the customer 0
+1524849151140: Taxi 37  Locate at: (16, 56)   State: Serving  got the customer
+1524849151340: Taxi 37  Locate at: (17, 56)   State: Serving  got the customer
+1524849151540: Taxi 37  Locate at: (18, 56)   State: Serving  got the customer
+1524849151740: Taxi 37  Locate at: (19, 56)   State: Serving  got the customer
+1524849151940: Taxi 37  Locate at: (19, 57)   State: Serving  got the customer
+1524849152140: Taxi 37  Locate at: (20, 57)   State: Serving  got the customer
+1524849152340: Taxi 37  Locate at: (21, 57)   State: Serving  got the customer
+1524849152540: Taxi 37  Locate at: (22, 57)   State: Serving  got the customer
+1524849152740: Taxi 37  Locate at: (23, 57)   State: Serving  got the customer
+1524849152940: Taxi 37  Locate at: (24, 57)   State: Serving  got the customer
+1524849153140: Taxi 37  Locate at: (25, 57)   State: Serving  got the customer
+1524849153340: Taxi 37  Locate at: (25, 56)   State: Serving  got the customer
+1524849153540: Taxi 37  Locate at: (25, 55)   State: Serving  got the customer
+1524849153740: Taxi 37  Locate at: (25, 54)   State: Serving  got the customer
+1524849153940: Taxi 37  Locate at: (25, 53)   State: Serving  got the customer
+1524849154140: Taxi 37  Locate at: (26, 53)   State: Serving  got the customer
+1524849154340: Taxi 37  Locate at: (26, 52)   State: Serving  got the customer
+1524849154540: Taxi 37  Locate at: (27, 52)   State: Serving  got the customer
+1524849154740: Taxi 37  Locate at: (28, 52)   State: Serving  got the customer
+1524849154940: Taxi 37  Locate at: (29, 52)   State: Serving  got the customer
+1524849155140: Taxi 37  Locate at: (30, 52)   State: Serving  got the customer
+1524849155340: Taxi 37  Locate at: (31, 52)   State: Serving  got the customer
+1524849155540: Taxi 37  Locate at: (32, 52)   State: Serving  got the customer
+1524849155740: Taxi 37  Locate at: (32, 53)   State: Serving  got the customer
+1524849155940: Taxi 37  Locate at: (33, 53)   State: Serving  got the customer
+1524849156140: Taxi 37  Locate at: (34, 53)   State: Serving  got the customer
+1524849156340: Taxi 37  Locate at: (34, 52)   State: Serving  got the customer
+1524849156540: Taxi 37  Locate at: (35, 52)   State: Serving  got the customer
+1524849156740: Taxi 37  Locate at: (35, 51)   State: Serving  got the customer
+1524849156940: Taxi 37  Locate at: (36, 51)   State: Serving  got the customer
+1524849157140: Taxi 37  Locate at: (36, 50)   State: Serving  got the customer
+1524849157340: Taxi 37  Locate at: (36, 49)   State: Serving  got the customer
+1524849157540: Taxi 37  Locate at: (36, 48)   State: Serving  got the customer
+1524849157740: Taxi 37  Locate at: (36, 47)   State: Serving  got the customer
+1524849157940: Taxi 37  Locate at: (36, 46)   State: Serving  got the customer
+1524849158140: Taxi 37  Locate at: (37, 46)   State: Serving  got the customer
+1524849158340: Taxi 37  Locate at: (38, 46)   State: Serving  got the customer
+1524849158540: Taxi 37  Locate at: (39, 46)   State: Serving  got the customer
+1524849158740: Taxi 37  Locate at: (40, 46)   State: Serving  got the customer
+1524849158940: Taxi 37  Locate at: (41, 46)   State: Serving  got the customer
+1524849159140: Taxi 37  Locate at: (41, 45)   State: Serving  got the customer
+1524849159340: Taxi 37  Locate at: (42, 45)   State: Serving  got the customer
+1524849159540: Taxi 37  Locate at: (42, 44)   State: Serving  got the customer
+1524849159740: Taxi 37  Locate at: (43, 44)   State: Serving  got the customer
+1524849159940: Taxi 37  Locate at: (44, 44)   State: Serving  got the customer
+1524849160140: Taxi 37  Locate at: (44, 43)   State: Serving  got the customer
+1524849160340: Taxi 37  Locate at: (45, 43)   State: Serving  got the customer
+1524849160540: Taxi 37  Locate at: (46, 43)   State: Serving  got the customer
+1524849160740: Taxi 37  Locate at: (47, 43)   State: Serving  got the customer
+1524849160940: Taxi 37  Locate at: (47, 42)   State: Serving  got the customer
+1524849161140: Taxi 37  Locate at: (48, 42)   State: Serving  got the customer
+1524849161340: Taxi 37  Locate at: (49, 42)   State: Serving  got the customer
+1524849161540: Taxi 37  Locate at: (50, 42)   State: Serving  got the customer
+1524849161740: Taxi 37  Locate at: (50, 41)   State: Serving  got the customer
+1524849161940: Taxi 37  Locate at: (50, 40)   State: Serving  got the customer
+1524849162140: Taxi 37  Locate at: (51, 40)   State: Serving  got the customer
+1524849162340: Taxi 37  Locate at: (52, 40)   State: Serving  got the customer
+1524849162540: Taxi 37  Locate at: (52, 39)   State: Serving  got the customer
+1524849162740: Taxi 37  Locate at: (53, 39)   State: Serving  got the customer
+1524849162940: Taxi 37  Locate at: (54, 39)   State: Serving  got the customer
+1524849163140: Taxi 37  Locate at: (54, 38)   State: Serving  got the customer
+1524849163340: Taxi 37  Locate at: (54, 37)   State: Serving  got the customer
+1524849163540: Taxi 37  Locate at: (55, 37)   State: Serving  got the customer
+1524849163740: Taxi 37  Locate at: (55, 36)   State: Serving  got the customer
+1524849163940: Taxi 37  Locate at: (55, 35)   State: Serving  got the customer
+1524849164140: Taxi 37  Locate at: (55, 34)   State: Serving  got the customer
+1524849164340: Taxi 37  Locate at: (55, 33)   State: Serving  got the customer
+1524849164540: Taxi 37  Locate at: (55, 32)   State: Serving  got the customer
+1524849164740: Taxi 37  Locate at: (55, 31)   State: Serving  got the customer
+1524849164940: Taxi 37  Locate at: (55, 30)   State: Serving  got the customer
+1524849165140: Taxi 37  Locate at: (55, 29)   State: Serving  got the customer
+1524849165340: Taxi 37  Locate at: (54, 29)   State: Serving  got the customer
+1524849165540: Taxi 37  Locate at: (54, 28)   State: Serving  got the customer
+1524849165740: Taxi 37  Locate at: (55, 28)   State: Serving  got the customer
+1524849165940: Taxi 37  Locate at: (56, 28)   State: Serving  got the customer
+1524849166140: Taxi 37  Locate at: (57, 28)   State: Serving  got the customer
+1524849166340: Taxi 37  Locate at: (57, 27)   State: Serving  got the customer
+1524849166540: Taxi 37  Locate at: (57, 26)   State: Serving  got the customer
+1524849166740: Taxi 37  Locate at: (57, 25)   State: Serving  got the customer
+1524849166940: Taxi 37  Locate at: (57, 24)   State: Serving  got the customer
+1524849167140: Taxi 37  Locate at: (58, 24)   State: Serving  got the customer
+1524849167340: Taxi 37  Locate at: (58, 23)   State: Serving  got the customer
+1524849167540: Taxi 37  Locate at: (58, 22)   State: Serving  got the customer
+1524849167740: Taxi 37  Locate at: (58, 21)   State: Serving  got the customer
+1524849167940: Taxi 37  Locate at: (58, 20)   State: Serving  got the customer
+1524849168140: Taxi 37  Locate at: (59, 20)   State: Serving  got the customer
+1524849168340: Taxi 37  Locate at: (59, 19)   State: Serving  got the customer
+1524849168540: Taxi 37  Locate at: (60, 19)   State: Serving  got the customer
+1524849168740: Taxi 37  Locate at: (60, 18)   State: Serving  got the customer
+1524849168940: Taxi 37  Locate at: (60, 17)   State: Serving  got the customer
+1524849169140: Taxi 37  Locate at: (61, 17)   State: Serving  got the customer
+1524849169340: Taxi 37  Locate at: (61, 16)   State: Serving  got the customer
+1524849169540: Taxi 37  Locate at: (60, 16)   State: Serving  got the customer
+1524849169740: Taxi 37  Locate at: (60, 15)   State: Serving  got the customer
+1524849169940: Taxi 37  Locate at: (60, 14)   State: Serving  got the customer
+1524849170140: Taxi 37  Locate at: (60, 13)   State: Serving  got the customer
+1524849170340: Taxi 37  Locate at: (60, 12)   State: Serving  got the customer
+1524849170540: Taxi 37  Locate at: (61, 12)   State: Serving  got the customer
+1524849170740: Taxi 37  Locate at: (61, 11)   State: Serving  got the customer
+1524849170940: Taxi 37  Locate at: (61, 10)   State: Serving  got the customer
+1524849171140: Taxi 37  Locate at: (61, 9)   State: Serving  got the customer
+1524849171340: Taxi 37  Locate at: (61, 8)   State: Serving  got the customer
+1524849171540: Taxi 37  Locate at: (61, 7)   State: Serving  got the customer
+1524849171740: Taxi 37  Locate at: (61, 6)   State: Serving  got the customer
+1524849171940: Taxi 37  Locate at: (61, 5)   State: Serving  got the customer
+1524849172140: Taxi 37  Locate at: (60, 5)   State: Serving  got the customer
+1524849172340: Taxi 37  Locate at: (60, 4)   State: Serving  got the customer
+1524849172540: Taxi 37  Locate at: (60, 3)   State: Serving  got the customer
+1524849172740: Taxi 37  Locate at: (60, 2)   State: Serving  got the customer
+1524849172940: Taxi 37  Locate at: (59, 2)   State: Serving  got the customer
+Arrived!!!  Taxi 37  Locate at: (59, 1)   State: Stopping  At 1524849173140 The taxi picked customer 0

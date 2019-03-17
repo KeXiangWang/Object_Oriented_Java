@@ -1,0 +1,244 @@
+IF D:\test\a.txt renamed THEN record-summary
+IF D:\test\a.txt renamed THEN recover
+IF D:\test renamed THEN record-summary
+IF D:\test renamed THEN record-detail
+IF D:\test modified THEN record-summary
+IF D:\test renamed THEN recover
+IF D:\test renamed THEN record-summary
+IF D:\test modified THEN record-summary
+IF D:\test size-changed THEN record-summary
+IF D:\test path-changed THEN record-summary
+END
+
+
+IF D:\test renamed THEN record-summary
+IF D:\test modified THEN record-summary
+IF D:\test size-changed THEN record-summary
+IF D:\test path-changed THEN record-summary
+END
+
+IF D:\test renamed THEN record-detail
+IF D:\test modified THEN record-detail
+IF D:\test size-changed THEN record-detail
+IF D:\test path-changed THEN record-detail
+END
+
+IF D:\test\outDir0\testFilea renamed THEN record-detail
+IF D:\test\outDir0\testFilea modified THEN record-detail
+IF D:\test\outDir0\testFilea size-changed THEN record-detail
+IF D:\test\outDir0\testFilea path-changed THEN record-detail
+IF D:\test\outDir0\testFilec renamed THEN record-detail
+IF D:\test\outDir0\testFilec modified THEN record-detail
+IF D:\test\outDir0\testFilec size-changed THEN record-detail
+IF D:\test\outDir0\testFilec path-changed THEN record-detail
+IF D:\test\outDir0\testFileb renamed THEN recover
+IF D:\test\outDir0\testFileb path-changed THEN recover
+IF D:\test\outDir0\testFiled renamed THEN record-detail
+IF D:\test\outDir0\testFiled modified THEN record-detail
+IF D:\test\outDir0\testFiled size-changed THEN record-detail
+IF D:\test\outDir0\testFiled path-changed THEN record-detail
+END
+
+IF D:\test renamed THEN record-detail
+IF D:\test\outDir0\testFilea renamed THEN record-detail
+IF D:\test\outDir0\testFileb renamed THEN recover
+END
+
+
+
+IF D:\test renamed THEN record-detail
+IF D:\test modified THEN record-detail
+IF D:\test size-changed THEN record-detail
+IF D:\test path-changed THEN record-detail
+IF D:\test\outDir0\testFilea renamed THEN record-detail
+IF D:\test\outDir0\testFilea modified THEN record-detail
+IF D:\test\outDir0\testFilea size-changed THEN record-detail
+IF D:\test\outDir0\testFilea path-changed THEN record-detail
+IF D:\test\outDir0\testFilec renamed THEN record-detail
+IF D:\test\outDir0\testFilec modified THEN record-detail
+IF D:\test\outDir0\testFilec size-changed THEN record-detail
+IF D:\test\outDir0\testFilec path-changed THEN record-detail
+IF D:\test\outDir0\testFileb renamed THEN recover
+IF D:\test\outDir0\testFileb path-changed THEN recover
+IF D:\test\outDir0\testFiled renamed THEN record-detail
+IF D:\test\outDir0\testFiled modified THEN record-detail
+IF D:\test\outDir0\testFiled size-changed THEN record-detail
+IF D:\test\outDir0\testFiled path-changed THEN record-detail
+END
+
+IF D:\test renamed THEN record-detail
+
+
+IF D:\test\outDir0\testFileb renamed THEN recover
+IF D:\test\outDir0\testFileb path-changed THEN recover
+END
+IF [D:\test\TextFile\a\a_a\a_x2.txt] renamed THEN recover
+renamed ...\Wide\file-10 to ...\Wide\new_name
+renamed ...\Deep\0\1\2\3\4\5\6\7\8\file to ...\Deep\0\1\2\3\4\5\6\7\8\new_name
+
+
+IF [D:\test\TextFile\a\a_a] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_a] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] modified THEN record-detail
+IF [D:\test\TextFile\a\a_file.txt] path-changed THEN record-detail
+IF [D:\test\TextFile\a] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_file.txt] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a] renamed THEN recover
+
+IF [D:\test\TextFile\a] path-changed THEN record-summary
+IF [D:\test\TextFile\a] path-changed THEN recover
+
+IF [D:\test\TextFile\a\a_a] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a] path-changed THEN record-summary
+IF [D:\test\Wide] renamed THEN record-summary
+IF [D:\test\Deep] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] size-changed THEN record-summary
+IF [D:\test\TextFile\a] renamed THEN record-detail
+
+
+
+
+IF [D:\test\TextFile\b] renamed THEN record-detail
+IF [D:\test\TextFile\b] renamed THEN record-summary
+IF [D:\test\TextFile\b] renamed THEN recover
+IF [D:\test\TextFile\c] renamed THEN record-detail
+IF [D:\test\TextFile\c] renamed THEN record-summary
+IF [D:\test\TextFile\c] renamed THEN recover
+IF [D:\test\TextFile\a\a_a] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_a] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a] renamed THEN recover
+IF [D:\test\TextFile\a\a_b] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_b] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_b] renamed THEN recover
+IF [D:\test\TextFile\a\a_c] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_c] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_c] renamed THEN recover
+IF [D:\test\TextFile\b] path-changed THEN record-detail
+IF [D:\test\TextFile\b] path-changed THEN record-summary
+IF [D:\test\TextFile\b] path-changed THEN recover
+IF [D:\test\TextFile\c] path-changed THEN record-detail
+IF [D:\test\TextFile\c] path-changed THEN record-summary
+IF [D:\test\TextFile\c] path-changed THEN recover
+IF [D:\test\TextFile\a\a_a] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a] path-changed THEN recover
+IF [D:\test\TextFile\a\a_b] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_b] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_b] path-changed THEN recover
+IF [D:\test\TextFile\a\a_c] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_c] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_c] path-changed THEN recover
+IF [D:\test\TextFile\b] modified THEN record-detail
+IF [D:\test\TextFile\b] modified THEN record-summary
+IF [D:\test\TextFile\c] modified THEN record-detail
+IF [D:\test\TextFile\c] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a] modified THEN record-detail
+IF [D:\test\TextFile\a\a_a] modified THEN record-summary
+IF [D:\test\TextFile\a\a_b] modified THEN record-detail
+IF [D:\test\TextFile\a\a_b] modified THEN record-summary
+IF [D:\test\TextFile\a\a_c] modified THEN record-detail
+IF [D:\test\TextFile\a\a_c] modified THEN record-summary
+IF [D:\test\TextFile\b] size-changed THEN record-detail
+IF [D:\test\TextFile\b] size-changed THEN record-summary
+IF [D:\test\TextFile\c] size-changed THEN record-detail
+IF [D:\test\TextFile\c] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_b] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_b] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_c] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_c] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x0.txt] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x0.txt] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x0.txt] renamed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x1.txt] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x1.txt] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] renamed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x2.txt] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x2.txt] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x2.txt] renamed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x3.txt] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x3.txt] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x3.txt] renamed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x4.txt] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x4.txt] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x4.txt] renamed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x0.txt] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x0.txt] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x0.txt] path-changed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x1.txt] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x1.txt] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] path-changed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x2.txt] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x2.txt] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x2.txt] path-changed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x3.txt] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x3.txt] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x3.txt] path-changed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x4.txt] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x4.txt] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x4.txt] path-changed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x0.txt] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x0.txt] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x1.txt] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x2.txt] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x2.txt] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x3.txt] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x3.txt] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x4.txt] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x4.txt] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x0.txt] modified THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x0.txt] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] modified THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x1.txt] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x2.txt] modified THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x2.txt] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x3.txt] modified THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x3.txt] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x4.txt] modified THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x4.txt] modified THEN record-summary
+
+
+
+
+
+IF [D:\test\TextFile\a\a_a\a_x1.txt] renamed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x1.txt] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] path-changed THEN record-summary
+IF [D:\test\TextFile\a] renamed THEN recover
+
+
+
+IF [D:\test\TextFile\a] renamed THEN record-detail
+IF [D:\test\TextFile\a] renamed THEN record-summary
+IF [D:\test\TextFile\a] renamed THEN recover
+IF [D:\test\TextFile\a] modified THEN record-detail
+IF [D:\test\TextFile\a] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_a] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a] renamed THEN recover
+IF [D:\test\TextFile\a\a_a] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a] path-changed THEN recover
+IF [D:\test\TextFile\a\a_a] modified THEN record-detail
+IF [D:\test\TextFile\a\a_a] modified THEN record-summary
+IF [D:\test\TextFile\a\a_a] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] renamed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x1.txt] renamed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] renamed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x1.txt] path-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x1.txt] path-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] path-changed THEN recover
+IF [D:\test\TextFile\a\a_a\a_x1.txt] size-changed THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x1.txt] size-changed THEN record-summary
+IF [D:\test\TextFile\a\a_a\a_x1.txt] modified THEN record-detail
+IF [D:\test\TextFile\a\a_a\a_x1.txt] modified THEN record-summary

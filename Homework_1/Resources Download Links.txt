@@ -1,0 +1,13 @@
+课程资源下载地址
+
+课程环境：
+    提供的版本是：Eclipse Oxygen.2 (4.7.2)，jdk 8u162
+    Linux IDE
+        下载链接：https://pan.baidu.com/s/1TydzBLkvr7MOtNdtL56qJQ 密码：cmgu
+    MacOS IDE
+        链接：https://pan.baidu.com/s/1QEBnUwM7eVxGxcKoSQjREA 密码：a066
+    Windows IDE
+        链接：https://pan.baidu.com/s/1Giljim4ueQtzyQdxJW1Lyw 密码：mytz
+
+第一次MOOC
+	链接: https://pan.baidu.com/s/1Z1KVvgZze269squeXLffyg 密码: 675m

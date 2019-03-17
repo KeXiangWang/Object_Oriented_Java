@@ -1,0 +1,98 @@
+Time: 1527062745058  src: (48, 8)  dst(6, 53)
+Taxi ID: 89  Location: (50, 10)   State: Waiting Credit: 1 	 tried to get the customer
+Taxi ID: 24  Location: (52, 13)   State: Waiting Credit: 1 	 tried to get the customer
+Taxi ID: 95  Location: (54, 7)   State: Waiting Credit: 1 	 tried to get the customer
+At the time of 1527062752558  Time: 1527062745058  src: (48, 8)  dst(6, 53) has been dispatched to Taxi ID: 89  Location: (50, 10)   State: ToCustomer Credit: 1
+1527062753201: Taxi 89  Locate at: (49, 10)   State: ToCustomer  on the way to get customer
+1527062753701: Taxi 89  Locate at: (48, 10)   State: ToCustomer  on the way to get customer
+1527062754201: Taxi 89  Locate at: (48, 9)   State: ToCustomer  on the way to get customer
+1527062754701: Taxi ID: 89  Location: (48, 8)   State: ToCustomer Credit: 1 arrived at where the customer 1 is
+1527062755701: Taxi ID: 89  Location: (48, 8)   State: Stopping Credit: 1 finally get the customer 1
+1527062755701: Taxi 89  Locate at: (48, 8)   State: Serving  got the customer
+1527062756201: Taxi 89  Locate at: (47, 8)   State: Serving  got the customer
+1527062756701: Taxi 89  Locate at: (47, 9)   State: Serving  got the customer
+1527062757201: Taxi 89  Locate at: (46, 9)   State: Serving  got the customer
+1527062757701: Taxi 89  Locate at: (45, 9)   State: Serving  got the customer
+1527062758625: Taxi 89  Locate at: (44, 9)   State: Serving  got the customer
+1527062759125: Taxi 89  Locate at: (43, 9)   State: Serving  got the customer
+1527062759625: Taxi 89  Locate at: (43, 10)   State: Serving  got the customer
+1527062760433: Taxi 89  Locate at: (42, 10)   State: Serving  got the customer
+1527062760933: Taxi 89  Locate at: (42, 11)   State: Serving  got the customer
+1527062761433: Taxi 89  Locate at: (42, 12)   State: Serving  got the customer
+1527062762241: Taxi 89  Locate at: (41, 12)   State: Serving  got the customer
+1527062762741: Taxi 89  Locate at: (40, 12)   State: Serving  got the customer
+1527062763241: Taxi 89  Locate at: (40, 13)   State: Serving  got the customer
+1527062764049: Taxi 89  Locate at: (39, 13)   State: Serving  got the customer
+1527062764549: Taxi 89  Locate at: (39, 14)   State: Serving  got the customer
+1527062765049: Taxi 89  Locate at: (39, 15)   State: Serving  got the customer
+1527062765549: Taxi 89  Locate at: (39, 16)   State: Serving  got the customer
+1527062766761: Taxi 89  Locate at: (39, 17)   State: Serving  got the customer
+1527062767261: Taxi 89  Locate at: (39, 18)   State: Serving  got the customer
+1527062767761: Taxi 89  Locate at: (39, 19)   State: Serving  got the customer
+1527062768569: Taxi 89  Locate at: (39, 20)   State: Serving  got the customer
+1527062769069: Taxi 89  Locate at: (39, 21)   State: Serving  got the customer
+1527062770377: Taxi 89  Locate at: (39, 22)   State: Serving  got the customer
+1527062770877: Taxi 89  Locate at: (39, 23)   State: Serving  got the customer
+1527062771377: Taxi 89  Locate at: (38, 23)   State: Serving  got the customer
+1527062771877: Taxi 89  Locate at: (37, 23)   State: Serving  got the customer
+1527062772377: Taxi 89  Locate at: (37, 24)   State: Serving  got the customer
+1527062772877: Taxi 89  Locate at: (37, 25)   State: Serving  got the customer
+1527062773377: Taxi 89  Locate at: (37, 26)   State: Serving  got the customer
+1527062773877: Taxi 89  Locate at: (36, 26)   State: Serving  got the customer
+1527062774377: Taxi 89  Locate at: (36, 27)   State: Serving  got the customer
+1527062774877: Taxi 89  Locate at: (36, 28)   State: Serving  got the customer
+1527062775377: Taxi 89  Locate at: (35, 28)   State: Serving  got the customer
+1527062775877: Taxi 89  Locate at: (34, 28)   State: Serving  got the customer
+1527062776705: Taxi 89  Locate at: (33, 28)   State: Serving  got the customer
+1527062777205: Taxi 89  Locate at: (32, 28)   State: Serving  got the customer
+1527062778513: Taxi 89  Locate at: (31, 28)   State: Serving  got the customer
+1527062779013: Taxi 89  Locate at: (30, 28)   State: Serving  got the customer
+1527062780321: Taxi 89  Locate at: (29, 28)   State: Serving  got the customer
+1527062780821: Taxi 89  Locate at: (29, 29)   State: Serving  got the customer
+1527062782129: Taxi 89  Locate at: (28, 29)   State: Serving  got the customer
+1527062782629: Taxi 89  Locate at: (27, 29)   State: Serving  got the customer
+1527062783129: Taxi 89  Locate at: (26, 29)   State: Serving  got the customer
+1527062783629: Taxi 89  Locate at: (25, 29)   State: Serving  got the customer
+1527062784129: Taxi 89  Locate at: (24, 29)   State: Serving  got the customer
+1527062784629: Taxi 89  Locate at: (23, 29)   State: Serving  got the customer
+1527062785129: Taxi 89  Locate at: (22, 29)   State: Serving  got the customer
+1527062785629: Taxi 89  Locate at: (21, 29)   State: Serving  got the customer
+1527062786129: Taxi 89  Locate at: (20, 29)   State: Serving  got the customer
+1527062786629: Taxi 89  Locate at: (20, 30)   State: Serving  got the customer
+1527062787129: Taxi 89  Locate at: (20, 31)   State: Serving  got the customer
+1527062787629: Taxi 89  Locate at: (19, 31)   State: Serving  got the customer
+1527062788129: Taxi 89  Locate at: (19, 32)   State: Serving  got the customer
+1527062789361: Taxi 89  Locate at: (18, 32)   State: Serving  got the customer
+1527062789861: Taxi 89  Locate at: (17, 32)   State: Serving  got the customer
+1527062791169: Taxi 89  Locate at: (16, 32)   State: Serving  got the customer
+1527062791669: Taxi 89  Locate at: (16, 33)   State: Serving  got the customer
+1527062792977: Taxi 89  Locate at: (15, 33)   State: Serving  got the customer
+1527062793477: Taxi 89  Locate at: (14, 33)   State: Serving  got the customer
+1527062793977: Taxi 89  Locate at: (14, 34)   State: Serving  got the customer
+1527062794785: Taxi 89  Locate at: (13, 34)   State: Serving  got the customer
+1527062795285: Taxi 89  Locate at: (13, 35)   State: Serving  got the customer
+1527062796593: Taxi 89  Locate at: (12, 35)   State: Serving  got the customer
+1527062797093: Taxi 89  Locate at: (12, 36)   State: Serving  got the customer
+1527062798401: Taxi 89  Locate at: (11, 36)   State: Serving  got the customer
+1527062798901: Taxi 89  Locate at: (11, 37)   State: Serving  got the customer
+1527062800209: Taxi 89  Locate at: (10, 37)   State: Serving  got the customer
+1527062800709: Taxi 89  Locate at: (10, 38)   State: Serving  got the customer
+1527062801209: Taxi 89  Locate at: (10, 39)   State: Serving  got the customer
+1527062802017: Taxi 89  Locate at: (9, 39)   State: Serving  got the customer
+1527062802517: Taxi 89  Locate at: (9, 40)   State: Serving  got the customer
+1527062803017: Taxi 89  Locate at: (9, 41)   State: Serving  got the customer
+1527062803517: Taxi 89  Locate at: (9, 42)   State: Serving  got the customer
+1527062804729: Taxi 89  Locate at: (9, 43)   State: Serving  got the customer
+1527062805229: Taxi 89  Locate at: (9, 44)   State: Serving  got the customer
+1527062806537: Taxi 89  Locate at: (9, 45)   State: Serving  got the customer
+1527062807037: Taxi 89  Locate at: (9, 46)   State: Serving  got the customer
+1527062807537: Taxi 89  Locate at: (9, 47)   State: Serving  got the customer
+1527062808037: Taxi 89  Locate at: (9, 48)   State: Serving  got the customer
+1527062808537: Taxi 89  Locate at: (9, 49)   State: Serving  got the customer
+1527062809037: Taxi 89  Locate at: (9, 50)   State: Serving  got the customer
+1527062810153: Taxi 89  Locate at: (9, 51)   State: Serving  got the customer
+1527062811057: Taxi 89  Locate at: (8, 51)   State: Serving  got the customer
+1527062811557: Taxi 89  Locate at: (7, 51)   State: Serving  got the customer
+1527062812057: Taxi 89  Locate at: (7, 52)   State: Serving  got the customer
+1527062812557: Taxi 89  Locate at: (7, 53)   State: Serving  got the customer
+Arrived!!!  Taxi 89  Locate at: (6, 53)   State: Stopping  At 1527062813057 The taxi picked customer 1
